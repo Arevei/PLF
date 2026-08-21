@@ -1,0 +1,152 @@
+"use client";
+import { Layout } from "@/components/layout/Layout";
+import { useLanguage } from "@/lib/language-context";
+import { Handshake, Heart, Leaf, Sparkles } from "lucide-react";
+
+export default function About() {
+  const { t } = useLanguage();
+
+  return (
+    <Layout>
+      <div className="bg-primary text-primary-foreground py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold  mb-4">
+            {t("About Us", "हमारे बारे में")}
+          </h1>
+          <p className="text-xl  mx-auto max-w-2xl font-serif">
+            {t(
+              "A journey of selfless service dedicated to uplifting the most vulnerable sections of society.",
+              "समाज के सबसे कमजोर वर्गों के उत्थान के लिए समर्पित निस्वार्थ सेवा की एक यात्रा।"
+            )}
+          </p>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto prose prose-lg prose-red dark:prose-invert">
+          <p>
+            {t(
+              "PLF — Passion for the Least Foundation was founded with a singular, unwavering mission: to serve humanity without any expectation of reward. We believe that true fulfillment comes from lifting others up and creating pathways of opportunity for those left behind by circumstances.",
+              "निस्वार्थजन सेवा फाउंडेशन की स्थापना एक ही अटूट मिशन के साथ की गई थी: बिना किसी प्रतिफल की अपेक्षा के मानवता की सेवा करना। हमारा मानना ​​है कि सच्ची तृप्ति दूसरों को ऊपर उठाने और परिस्थितियों के कारण पीछे छूट गए लोगों के लिए अवसर के रास्ते बनाने से मिलती है।"
+            )}
+          </p>
+          <p>
+            {t(
+              "Operating primarily in rural and semi-urban regions of India, our foundation focuses on critical pillars of societal development: Education, Healthcare, Women's Empowerment, Environmental Conservation, and Disaster Relief.",
+              "मुख्य रूप से भारत के ग्रामीण और अर्ध-शहरी क्षेत्रों में काम करते हुए, हमारा फाउंडेशन सामाजिक विकास के महत्वपूर्ण स्तंभों पर ध्यान केंद्रित करता है: शिक्षा, स्वास्थ्य सेवा, महिला सशक्तिकरण, पर्यावरण संरक्षण और आपदा राहत।"
+            )}
+          </p>
+          <h2>{t("Our Core Values", "हमारे मूल मूल्य")}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mt-6">
+            {[
+              {
+                icon: Handshake,
+                title: t("Seva (Selfless Service)", "सेवा (निस्वार्थ सेवा)"),
+                desc: t("Serving without borders, biases, or expectations.", "बिना किसी सीमा, पूर्वाग्रह या अपेक्षा के सेवा करना।"),
+              },
+              {
+                icon: Sparkles,
+                title: t("Integrity", "ईमानदारी"),
+                desc: t("Utmost transparency in our operations and utilization of funds.", "हमारे संचालन और धन के उपयोग में अत्यंत पारदर्शिता।"),
+              },
+              {
+                icon: Heart,
+                title: t("Compassion", "करुणा"),
+                desc: t("Approaching every individual with empathy and respect.", "हर व्यक्ति से सहानुभूति और सम्मान के साथ संपर्क करना।"),
+              },
+              {
+                icon: Leaf,
+                title: t("Sustainability", "स्थिरता"),
+                desc: t("Creating long-term solutions, not just temporary fixes.", "सिर्फ अस्थायी समाधान नहीं, बल्कि दीर्घकालिक समाधान बनाना।"),
+              },
+            ].map(({icon:Icon,title,desc}, idx) => (
+              <div
+                key={idx}
+                className="flex gap-4 p-5 rounded-xl border bg-card hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xl">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{title}</h3>
+                  <p className="text-sm text-muted-foreground">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+       <section className="max-w-5xl mx-auto mt-16 px-4">
+  <div className="text-center mb-10">
+    <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+      {t("Leadership Team", "नेतृत्व टीम")}
+    </h2>
+    <p className="text-muted-foreground mt-2">
+      {t(
+        "Founder, Secretary and Treasurer",
+        "संस्थापक, सचिव और कोषाध्यक्ष"
+      )}
+    </p>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center mb-10">
+    {[
+      {
+        name: "Mayank Singh",
+        hname: "मयंक सिंह",
+        roleEn: "Founder",
+        roleHi: "संस्थापक",
+        image: "/leadership/Founder.jpg",
+      },
+      
+      {
+        name: "Punit Tiwari",
+        hname: "पुनीत तिवारी",
+        roleEn: "Treasurer",
+        roleHi: "कोषाध्यक्ष",
+        image: "/leadership/Treasurer.jpg",
+      },
+      {
+        name: "Himani Tiwari",
+        hname: "हिमानी तिवारी",
+        roleEn: "Secretary, Social Affairs",
+        roleHi: "सचिव, सामाजिक मामले",
+        image: "/leadership/Secretary.jpg",
+      },
+      {
+        name: "Hemant Pratap Singh",
+        hname: "हेमंत प्रताप सिंह",
+        roleEn: "Vice President",
+        roleHi: "उपाध्यक्ष",
+        image: "/leadership/vice-president.jpeg",
+      },
+    ].map((member) => (
+      <div
+        key={member.roleEn}
+        className="w-full max-w-sm bg-card border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+      >
+        <img
+          src={member.image}
+          alt={member.roleEn}
+          className="w-full h-96 aspect-[3/4] object-cover"
+        />
+
+        <div className="p-5 text-center">
+          <h3 className="text-lg font-semibold text-foreground">
+            {t(member.name, member.hname)}
+          </h3>
+
+          <p className="mt-1 text-sm text-muted-foreground">
+            {t(member.roleEn, member.roleHi)}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+      </div>
+    </Layout>
+  );
+}
+
+
+

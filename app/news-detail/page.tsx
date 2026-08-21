@@ -1,0 +1,116 @@
+"use client";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Layout } from "@/components/layout/Layout";
+import { useLanguage } from "@/lib/language-context";
+import { useGetNewsArticle, getGetNewsArticleQueryKey } from "@/lib/api-client/api";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, Calendar, User } from "lucide-react";
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+const toRenderableHtml = (value: string) => {
+  if (/<[a-z][\s\S]*>/i.test(value)) return value;
+
+  return value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => `<p>${escapeHtml(line)}</p>`)
+    .join("");
+};
+
+export default function NewsDetail() {
+  const { t } = useLanguage();
+  const params = useParams<{ id: string }>();
+  const id = parseInt(params?.id ?? "0");
+
+  const { data: article, isLoading } = useGetNewsArticle(id, {
+    query: { enabled: !!id, queryKey: getGetNewsArticleQueryKey(id) },
+  });
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-16 text-center">
+          <div className="animate-pulse space-y-4 max-w-2xl mx-auto">
+            <div className="h-8 bg-muted rounded w-3/4 mx-auto" />
+            <div className="h-4 bg-muted rounded w-1/2 mx-auto" />
+            <div className="h-64 bg-muted rounded" />
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!article) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h1 className="text-2xl font-bold text-foreground mb-4">{t("Article not found", "लेख नहीं मिला")}</h1>
+          <Button asChild><Link href="/news">{t("Back to News", "समाचार पर वापस जाएं")}</Link></Button>
+        </div>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <div className="container mx-auto px-4 py-12 max-w-3xl">
+        <Button variant="ghost" asChild className="mb-6 text-primary hover:text-primary/80">
+          <Link href="/news">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t("Back to News", "समाचार पर वापस")}
+          </Link>
+        </Button>
+
+        {article.imageUrl && (
+          <div className="relative w-full overflow-hidden rounded-xl bg-black mb-8">
+            <div className="relative h-72 md:h-[28rem]">
+              <img src={article.imageUrl} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl" />
+              <div className="absolute inset-0 bg-black/20" />
+              <img src={article.imageUrl} alt={t(article.title, article.titleHindi)} className="absolute inset-0 h-full w-full object-contain p-2" />
+            </div>
+          </div>
+        )}
+
+        <Badge className="mb-4 bg-primary/10 text-primary border-0 capitalize">{article.category}</Badge>
+
+        <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+          {t(article.title, article.titleHindi)}
+        </h1>
+
+        <div className="flex items-center gap-6 text-muted-foreground text-sm mb-8 pb-8 border-b">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4" />
+            {new Date(article.publishedAt).toLocaleDateString("hi-IN", { year: "numeric", month: "long", day: "numeric" })}
+          </div>
+          {article.author && (
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              {article.author}
+            </div>
+          )}
+        </div>
+
+        <div
+          className="prose prose-lg max-w-none text-foreground leading-relaxed prose-p:text-foreground prose-headings:text-foreground prose-a:text-primary"
+          dangerouslySetInnerHTML={{ __html: toRenderableHtml(t(article.content, article.contentHindi)) }}
+        />
+      </div>
+    </Layout>
+  );
+}
+
+
+
+
+
+

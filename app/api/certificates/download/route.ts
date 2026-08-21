@@ -1,0 +1,45 @@
+import { NextResponse } from "next/server";
+import { getDb } from "@/lib/db";
+import { getSession } from "@/lib/session";
+import { generateMembershipCertificatePdf, safeFileName, type MemberDocumentRecord } from "@/lib/membership-documents";
+
+export const runtime = "nodejs";
+
+export async function GET(req: Request) {
+  const session = await getSession();
+
+  if (!session.memberId) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
+
+  try {
+    const db = await getDb();
+    const member = await db.collection<MemberDocumentRecord>("members").findOne({ id: session.memberId });
+
+    if (!member) {
+      return NextResponse.json({ error: "Member not found" }, { status: 404 });
+    }
+
+    if (member.status !== "active") {
+      return NextResponse.json({ error: "Membership is not active" }, { status: 403 });
+    }
+
+    if (!member.certificateNumber) {
+      return NextResponse.json({ error: "Certificate has not been issued yet" }, { status: 404 });
+    }
+
+    const pdf = await generateMembershipCertificatePdf(member, req.url);
+    const fileName = `${safeFileName(member.certificateNumber)}.pdf`;
+
+    return new NextResponse(pdf, {
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `attachment; filename="${fileName}"`,
+        "Cache-Control": "private, no-store",
+      },
+    });
+  } catch (err) {
+    console.error("Failed to download certificate:", err);
+    return NextResponse.json({ error: "Failed to download certificate" }, { status: 500 });
+  }
+}
