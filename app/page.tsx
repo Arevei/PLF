@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { FacebookPagePlugin } from "@/components/home/FacebookPagePlugin";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HomeHeroCarousel } from "@/components/home/HomeHeroCarousel";
 import { HomeImpactShowcase } from "@/components/home/HomeImpactShowcase";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { useGetStats, useListCampaigns, useListGallery, useListNews } from "@/lib/api-client/api";
@@ -52,12 +53,8 @@ export default function Home() {
 
   return (
     <Layout>
+      <HomeHeroCarousel />
       <HomeHero />
-
-       <HomeImpactShowcase featuredCampaign={featuredCampaign} campaigns={campaigns} news={news} gallery={gallery} />
-
-<FacebookPagePlugin />
-       
 
       <section className="bg-muted/70 py-10 sm:py-14">
         <div className="container mx-auto grid gap-8 px-5 lg:grid-cols-[1fr_3fr] lg:px-8">
@@ -114,9 +111,9 @@ export default function Home() {
         </div>
       </section>
 
-     
+      <HomeImpactShowcase featuredCampaign={featuredCampaign} campaigns={campaigns} news={news} gallery={gallery} />
 
-      
+      <FacebookPagePlugin />
 
       <section className="bg-primary py-8 text-primary-foreground">
         <div className="container mx-auto flex flex-col gap-5 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">

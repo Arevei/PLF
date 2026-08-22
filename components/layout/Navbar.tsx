@@ -7,12 +7,9 @@ import { usePathname } from "next/navigation";
 import {
   Bell,
   Briefcase,
-  ChevronDown,
-  Globe,
   Heart,
   Images,
   Info,
-  Languages,
   LayoutDashboard,
   LogIn,
   Megaphone,
@@ -44,7 +41,7 @@ type MemberMessage = {
 };
 
 export function Navbar() {
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   const { user } = useAuth();
   const pathname = usePathname();
   const [memberMessage, setMemberMessage] = useState<MemberMessage | null>(null);
@@ -287,17 +284,6 @@ export function Navbar() {
                 <Separator />
 
                 <div className="grid gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setLanguage(language === "en" ? "hi" : "en")}
-                    className="flex min-h-12 items-center gap-3 rounded-lg border border-transparent bg-background px-3 text-left text-sm font-semibold transition-colors hover:border-primary/20 hover:bg-accent hover:text-primary"
-                  >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-primary">
-                      <Languages className="h-4 w-4" />
-                    </span>
-                    {language === "hi" ? "English" : "Hindi"}
-                  </button>
-
                   <SheetClose asChild>
                     <Link
                       href={user ? "/dashboard" : "/login"}

@@ -1,47 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/lib/language-context";
 
-const heroImage = "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1600&auto=format&fit=crop";
-const logo = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/469710739_612718211319474_5696599549072528849_n-MYot00380QWkD4ENrAK6cVVMH8XG4V.jpg";
+const aboutImage = "/images/Community-Building.webp";
 
 export function HomeHero() {
-  const { t } = useLanguage();
-
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-secondary/10" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 opacity-50 [background-image:radial-gradient(ellipse_at_center,_transparent_35%,_hsl(var(--primary)/.12)_36%,_transparent_37%)] [background-size:28px_18px]" />
-      <div className="container relative mx-auto grid min-h-[590px] items-center gap-10 px-5 py-14 lg:grid-cols-[.92fr_1.08fr] lg:px-8 lg:py-20">
-        <div className="z-10 max-w-xl">
-          <p className="mb-4 text-sm font-bold uppercase tracking-[.22em] text-primary">{t("Passion for the least", "सबसे वंचित के लिए जुनून")}</p>
-          <h1 className="font-serif text-5xl font-bold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            {t("Building dignity. Empowering futures.", "गरिमा का निर्माण। भविष्य को सशक्त बनाना।")}
-          </h1>
-          <div className="my-7 h-1 w-12 bg-accent" />
-          <p className="max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
-            {t("We walk with communities to create lasting change through livelihood, education, care for animals, and a healthier planet.", "हम समुदायों के साथ मिलकर आजीविका, शिक्षा, पशु देखभाल और स्वस्थ ग्रह के माध्यम से स्थायी बदलाव लाते हैं।")}
+    <section className="relative overflow-hidden bg-[#f4f9fc] py-16 sm:py-24">
+      <div className="absolute -left-24 -top-24 size-72 rounded-full bg-[#dceef8]" />
+      <div className="absolute -right-36 top-1/2 hidden size-128 -translate-y-1/2 rounded-full border-[1.25rem] border-primary/10 lg:block" />
+      <div className="container relative mx-auto grid items-center gap-14 px-5 lg:grid-cols-[.88fr_1.12fr] lg:gap-10 lg:px-8">
+        <div className="order-1 max-w-xl">
+          <p className="text-sm font-bold uppercase tracking-[.25em] text-primary">Passion for the least</p>
+          <h2 className="mt-4 font-serif text-5xl font-black leading-[.98] tracking-tight text-[#12385d] sm:text-6xl lg:text-[4.5rem]">
+            Building dignity.<br />Empowering futures.
+          </h2>
+          <div className="my-8 h-1 w-14 bg-accent" />
+          <p className="max-w-lg text-base leading-8 text-[#4b6d89] sm:text-lg">
+            We walk with communities to create lasting change through livelihood, education, care for animals, and a healthier planet.
           </p>
+
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full px-7">
-              <Link href="/about">{t("Our Mission", "हमारा मिशन")} <ArrowRight data-icon="inline-end" /></Link>
+            <Button asChild size="lg" className="rounded-full px-7 shadow-lg shadow-primary/20">
+              <Link href="/about">
+                Our Mission
+                <ArrowRight data-icon="inline-end" />
+              </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-primary/30 px-7 text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link href="/donate"><Heart data-icon="inline-start" /> {t("Donate Now", "अभी दान करें")}</Link>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-primary/25 bg-white/60 px-7 text-primary hover:bg-primary hover:text-primary-foreground">
+              <Link href="/donate">
+                <Heart data-icon="inline-start" />
+                Donate Now
+              </Link>
             </Button>
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-2xl lg:mr-[-8rem]">
-          <div className="relative overflow-hidden rounded-[50%_0_0_50%] border-[10px] border-primary/90 bg-primary p-2 shadow-2xl sm:border-[16px]">
-            <img src={heroImage} alt={t("A smiling child holding a young goat", "एक मुस्कुराता बच्चा बकरी के बच्चे को पकड़े हुए") } className="aspect-[1.1] w-full rounded-[50%_0_0_50%] object-cover" />
+        <div className="relative order-2 min-h-104 sm:min-h-136">
+          <div className="absolute inset-y-0 -right-32 w-[calc(100%+8rem)] overflow-hidden rounded-l-[52%] rounded-r-none border-[1.1rem] border-primary bg-primary shadow-2xl sm:-right-48 sm:w-[calc(100%+12rem)]">
+            <img src={aboutImage} alt="Children gathered during a PLEF community program" className="size-full object-cover object-center" />
           </div>
-          <div className="absolute bottom-4 left-5 flex max-w-xs items-center gap-4 rounded-2xl bg-primary p-4 text-primary-foreground shadow-xl sm:bottom-8 sm:left-[-2rem] sm:p-5">
-            <img src={logo} alt="PLEF" className="size-14 rounded-full object-cover ring-2 ring-primary-foreground/80" />
-            <div><p className="font-bold">{t("A compassionate India", "एक संवेदनशील भारत")}</p><p className="mt-1 text-xs leading-5 text-primary-foreground/75">{t("Where every life is valued and every community thrives.", "जहाँ हर जीवन मूल्यवान है और हर समुदाय आगे बढ़ता है।")}</p></div>
+          <div className="absolute bottom-5 left-0 z-10 max-w-88 rounded-[8px] bg-primary p-5 text-primary-foreground shadow-2xl sm:bottom-8 sm:-left-8 sm:p-6">
+            <div className="flex items-start gap-3">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-foreground/15">
+                <HeartHandshake className="size-5" />
+              </span>
+              <div>
+                <p className="font-bold">A compassionate India</p>
+                <p className="mt-1 text-sm leading-6 text-primary-foreground/78">
+                  Where every life is valued and every community thrives.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

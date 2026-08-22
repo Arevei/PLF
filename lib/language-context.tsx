@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useContext, ReactNode } from "react";
 
 type Language = "en" | "hi";
 
@@ -188,44 +188,14 @@ function repairMojibake(value: string) {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("hi");
-
-  useEffect(() => {
-    async function initializeLanguage() {
-      const saved = window.localStorage.getItem("language");
-      if (saved === "en" || saved === "hi") {
-        setLanguageState(saved);
-        return;
-      }
-
-      try {
-        const response = await fetch("/api/site-settings/default-language");
-        if (response.ok) {
-          const data = (await response.json()) as { defaultLanguage?: Language };
-          if (data.defaultLanguage === "en" || data.defaultLanguage === "hi") {
-            setLanguageState(data.defaultLanguage);
-          }
-        }
-      } catch {
-        // Keep Hindi fallback when the setting is unavailable.
-      }
-    }
-
-    void initializeLanguage();
-  }, []);
-
+  const language: Language = "en";
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    window.localStorage.setItem("language", lang);
+    void lang;
   };
+  void fallbackHindi;
 
   const t = (en: string | null | undefined, hi: string | null | undefined) => {
-    const english = en || hi || "";
-    const hindi = hi && hi !== en ? hi : fallbackHindi[english] || hi || en || "";
-    if (language === "hi") {
-      return repairMojibake(hindi);
-    }
-    return repairMojibake(english);
+    return repairMojibake(en || hi || "");
   };
 
   return (
@@ -242,7 +212,5 @@ export function useLanguage() {
   }
   return context;
 }
-
-
 
 
