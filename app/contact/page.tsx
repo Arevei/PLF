@@ -145,7 +145,7 @@ export default function Contact() {
               allowFullScreen 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed/v1/place?q=C%2Fo%20Mayank%20Singh%20Sikarwar%2C%20Vill.%20%26%20Po.%20Tihar%20Thana%2C%20Rampura%20(Jalaun)%2C%20Jalaun%2C%20Jalaun%2C%20Uttar%20Pradesh%2C%20India%2C%20285127&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+              src="https://www.google.com/maps?q=C%2Fo%20Mayank%20Singh%20Sikarwar%2C%20Vill.%20%26%20Po.%20Tihar%20Thana%2C%20Rampura%20(Jalaun)%2C%20Jalaun%2C%20Jalaun%2C%20Uttar%20Pradesh%2C%20India%2C%20285127&output=embed"
             />
           </div>
         </div>
