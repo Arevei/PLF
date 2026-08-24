@@ -21,11 +21,11 @@ const devanagari = Noto_Sans_Devanagari({
 
 export const metadata: Metadata = {
   title: {
-    default: "PLEF — Passion for the Least Foundation",
-    template: "%s | PLEF",
+    default: "PLF — Passion for the Least Foundation",
+    template: "%s | PLF",
   },
   description:
-    "PLEF partners with communities to lift the least, expand opportunity, and build a kinder, more resilient India through education, health, livelihoods, and environmental action.",
+    "PLF partners with communities to lift the least, expand opportunity, and build a kinder, more resilient India through education, health, livelihoods, and environmental action.",
 };
 
 export default function RootLayout({
@@ -41,19 +41,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1WWZ82JGB9"
-          strategy="afterInteractive"
-        />
+        
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1WWZ82JGB9');
-          `}
-        </Script>
+       
 
 
 
