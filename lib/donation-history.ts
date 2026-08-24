@@ -135,7 +135,7 @@ export function generateDonationHistoryPdf(donations: DonationHistoryRecord[], d
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
   doc.setTextColor(89, 78, 73);
-  doc.text("This statement lists paid donations recorded by Nisvarthjan Seva Foundation.", 105, 286, {
+  doc.text("This statement lists paid donations recorded by PLF - Passion for the Least Foundation.", 105, 286, {
     align: "center",
   });
 

@@ -60,8 +60,8 @@ export function Footer() {
                 <h3 className="font-semibold text-white mb-1">{t("Address", "पता")}</h3>
                 <p className="text-sm text-white/80">
                   {t(
-                    "C/o Mayank Singh Sikarwar, Vill. & Po. Tihar Thana, Rampura (Jalaun), Jalaun, Jalaun, Uttar Pradesh, India, 285127",
-                    " केयर ऑफ़ मयंक सिंह सिकरवार, ग्राम व पोस्ट टीहर थाना, रामपुरा (जालौन), जालौन, जालौन, उत्तर प्रदेश, भारत, 285127"
+                    "R Govind Raji, 104A, Exotica Eastern Court, Ghaziabad, IN",
+                    "आर गोविंद राजी, 104ए, एक्सोटिका ईस्टर्न कोर्ट, गाजियाबाद, भारत"
                   )}
                 </p>
               </div>
@@ -74,8 +74,8 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold text-white mb-1">{t("Phone", "फोन")}</h3>
                 <div className="flex flex-col gap-1 text-sm">
-                  <a href="tel:+917380626179" className="text-white/80 hover:text-accent transition-colors">
-                    +91 73806 26179
+                  <a href="tel:+919999974145" className="text-white/80 hover:text-accent transition-colors">
+                    +91 9999974145
                   </a>
                   <a href="tel:+918851626084" className="text-white/80 hover:text-accent transition-colors">
                     +91 88516 26084

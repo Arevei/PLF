@@ -65,8 +65,8 @@ export default function Contact() {
             <div>
               <h3 className="font-semibold text-foreground mb-1">{t("Phone", "फोन")}</h3>
               <div className="flex flex-col gap-1 text-sm">
-                <a href="tel:+917380626179" className="text-muted-foreground hover:text-primary transition-colors">
-                  +91 73806 26179
+                <a href="tel:+919999974145" className="text-muted-foreground hover:text-primary transition-colors">
+                  +91 9999974145
                 </a>
                 <a href="tel:+918851626084" className="text-muted-foreground hover:text-primary transition-colors">
                   +91 88516 26084

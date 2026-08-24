@@ -230,7 +230,7 @@ export default function Dashboard() {
       key: user.payment.keyId || "",
       amount: user.payment.amount * 100,
       currency: user.payment.currency,
-      name: "Nisvarthjan Seva Foundation",
+      name: "PLF - Passion for the Least Foundation",
       description: `${user.membershipType} membership fee`,
       order_id: user.payment.orderId,
       prefill: {
@@ -526,7 +526,7 @@ export default function Dashboard() {
                 <h2 className="text-lg font-semibold">{t("Happy birthday", "जन्मदिन की शुभकामनाएं")}, {user.name}!</h2>
                 <p className="mt-1 text-sm text-rose-900/80">
                   {t(
-                    "Wishing you health, joy, and a meaningful year of service with Nisvarthjan Seva Foundation.",
+                    "Wishing you health, joy, and a meaningful year of service with PLF - Passion for the Least Foundation.",
                     "निस्वार्थजन सेवा फाउंडेशन के साथ आपको स्वास्थ्य, खुशी और सेवा के एक सार्थक वर्ष की शुभकामनाएं।"
                   )}
                 </p>
@@ -774,7 +774,7 @@ export default function Dashboard() {
                 <div className="flex items-center justify-between bg-primary px-4 py-3 text-primary-foreground">
                   <div className="flex items-center gap-2">
                     <BadgeCheck className="h-4 w-4" />
-                    <span className="text-xs font-bold uppercase">Nisvarthjan Seva Foundation</span>
+                    <span className="text-xs font-bold uppercase">PLF - Passion for the Least Foundation</span>
                   </div>
                   <QrCode className="h-5 w-5" />
                 </div>

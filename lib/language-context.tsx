@@ -102,7 +102,7 @@ const fallbackHindi: Record<string, string> = {
   "Recent Activity Posts": "हाल की गतिविधि पोस्ट",
   "View Activity Posts": "गतिविधि पोस्ट देखें",
   "Document Verification": "दस्तावेज़ सत्यापन",
-  "Scan a QR code or enter a verification number to confirm documents issued by Nisvarthjan Seva Foundation.": "Nisvarthjan Seva Foundation द्वारा जारी दस्तावेज़ों की पुष्टि के लिए QR कोड स्कैन करें या सत्यापन नंबर दर्ज करें।",
+  "Scan a QR code or enter a verification number to confirm documents issued by PLF - Passion for the Least Foundation.": "PLF - Passion for the Least Foundation द्वारा जारी दस्तावेज़ों की पुष्टि के लिए QR कोड स्कैन करें या सत्यापन नंबर दर्ज करें।",
   "Verification / Certificate Number *": "सत्यापन / प्रमाणपत्र नंबर *",
   "Mobile / Email (optional)": "मोबाइल / ईमेल (वैकल्पिक)",
   "Optional extra check": "वैकल्पिक अतिरिक्त जांच",
