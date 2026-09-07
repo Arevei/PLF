@@ -24,7 +24,7 @@ export function Footer() {
             </p>
             <p className="text-sm text-white/80">
               {t(
-                "PLEF exists to make dignity, opportunity, and a voice in the future accessible to every community.",
+                "PLF strengthens India's civil society through knowledge, capacity building, governance, leadership and collaboration.",
                 "भारत भर में शिक्षा, स्वास्थ्य, महिला सशक्तिकरण और ग्रामीण विकास के लिए समर्पित।",
               )}
             </p>
@@ -34,8 +34,8 @@ export function Footer() {
             <h4 className="mb-4 font-bold">{t("Quick Links", "त्वरित लिंक")}</h4>
             <ul className="space-y-2 text-sm text-white/80">
               <li><Link href="/about" className="hover:text-accent">{t("About Us", "हमारे बारे में")}</Link></li>
-              <li><Link href="/#mission" className="hover:text-accent">{t("Mission & Vision", "मिशन और विजन")}</Link></li>
-              <li><Link href="/services" className="hover:text-accent">{t("Our Programs", "हमारे कार्यक्रम")}</Link></li>
+              <li><Link href="/#mission" className="hover:text-accent">{t("Mission & Framework", "मिशन और विजन")}</Link></li>
+              <li><Link href="/services" className="hover:text-accent">{t("Focus Areas", "हमारे कार्यक्रम")}</Link></li>
               <li><Link href="/membership" className="hover:text-accent">{t("New Member Registration", "नया सदस्य पंजीकरण")}</Link></li>
             </ul>
           </div>

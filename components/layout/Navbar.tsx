@@ -57,7 +57,7 @@ export function Navbar() {
   // Build nav items conditionally
   const navItems = [
     { href: "/about", label: t("About Us", "हमारे बारे में"), icon: Info },
-    { href: "/services", label: t("Programs", "कार्यक्रम"), icon: Briefcase },
+    { href: "/services", label: t("Focus Areas", "कार्यक्रम"), icon: Briefcase },
     ...(allCampaigns.length > 0 ? [{ href: "/campaigns", label: t("Campaigns", "अभियान"), icon: Megaphone }] : []),
     ...(allNews.length > 0 ? [{ href: "/news", label: t("News", "समाचार"), icon: Newspaper }] : []),
     ...(uploadedGallery.length > 0 ? [{ href: "/gallery", label: t("Activity Post", "गतिविधि पोस्ट"), icon: Images }] : []),
@@ -217,7 +217,7 @@ export function Navbar() {
               {t("Login", "लॉगिन")}
             </Link>
           )}
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button asChild className="hidden bg-primary text-primary-foreground hover:bg-primary/90 sm:inline-flex">
             <Link href="/donate">{t("Donate", "दान करें")}</Link>
           </Button>
 
@@ -245,7 +245,7 @@ export function Navbar() {
                   {t("PLF", "पीएलएफ")}
                 </SheetTitle>
                 <SheetDescription>
-                  {t("Explore pages, member area, and ways to support.", "पेज, सदस्य क्षेत्र और सहयोग के विकल्प देखें।")}
+                  {t("Explore PLF's focus areas, member area, and collaboration pathways.", "पेज, सदस्य क्षेत्र और सहयोग के विकल्प देखें।")}
                 </SheetDescription>
               </SheetHeader>
 

@@ -8,12 +8,12 @@ import {
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  Droplets,
-  GraduationCap,
-  HandHeart,
+  BookOpenCheck,
+  Building2,
   Heart,
+  Landmark,
+  Network,
   Pause,
-  PawPrint,
   Play,
   Sparkles,
 } from "lucide-react";
@@ -29,21 +29,21 @@ type HomeImpactShowcaseProps = {
 
 const storySlides = [
   {
-    name: "Lakshmi",
-    role: "Entrepreneur, Rajasthan",
-    quote: "PLF did not just give me resources, they gave me confidence and a future.",
+    name: "Grassroots partner",
+    role: "Civil society organisation",
+    quote: "PLF helped us convert good intentions into stronger systems, clearer governance and measurable work.",
     image: "/images/women-development.jpg",
   },
   {
-    name: "Aman",
-    role: "Student, Madhya Pradesh",
-    quote: "My scholarship helped me stay in school and dream bigger.",
+    name: "Programme leader",
+    role: "Social-sector professional",
+    quote: "The learning support strengthened how our team plans, documents, monitors and communicates impact.",
     image: "/images/education.webp",
   },
   {
-    name: "Rural care team",
-    role: "Community volunteers",
-    quote: "Clean water and animal care changed the daily rhythm of our village.",
+    name: "CSR collaborator",
+    role: "Partnership team",
+    quote: "PLF creates the bridge between credible local organisations and partners ready to invest in lasting change.",
     image: "/images/Community-Building.webp",
   },
 ];
@@ -51,38 +51,38 @@ const storySlides = [
 const fallbackNews: NewsArticle[] = [
   {
     id: 9001,
-    title: "PLF and CEE India Partner for Rural Livelihoods",
-    content: "New field updates from community programs.",
-    excerpt: "New partnerships are expanding rural livelihood opportunities.",
+    title: "PLF Convening Explores Civil Society Capacity Priorities",
+    content: "New updates from PLF's knowledge and collaboration work.",
+    excerpt: "Partners discuss governance, learning systems and institutional sustainability.",
     imageUrl: "/gallery/events/event-1.webp",
     category: "Partnership",
     publishedAt: "2025-05-10T00:00:00.000Z",
   },
   {
     id: 9002,
-    title: "1000+ Students Receive Scholarships",
-    content: "Scholarship support continues across rural schools.",
-    excerpt: "Education support reaches students across underserved communities.",
+    title: "Capacity Academy Learning Cohort Announced",
+    content: "Training support continues for social-sector professionals.",
+    excerpt: "The cohort will focus on organisational systems, leadership and accountability.",
     imageUrl: "/gallery/events/event-2.webp",
     category: "Education",
     publishedAt: "2025-04-28T00:00:00.000Z",
   },
   {
     id: 9003,
-    title: "Animal Care Camp in Rural Rajasthan",
-    content: "Veterinary support and awareness sessions were held with local families.",
-    excerpt: "A rural care camp served families and working animals.",
+    title: "Governance Toolkit Released for NGO Boards",
+    content: "A practical resource for civil-society governance and board strengthening.",
+    excerpt: "The toolkit helps organisations improve roles, compliance and transparent decision-making.",
     imageUrl: "/gallery/events/event-5.webp",
-    category: "Animal Welfare",
+    category: "Governance",
     publishedAt: "2025-04-15T00:00:00.000Z",
   },
   {
     id: 9004,
-    title: "Women Build Skills Through Enterprise Training",
-    content: "Training cohorts are supporting local enterprise and income growth.",
-    excerpt: "New skill sessions help women grow sustainable income streams.",
+    title: "Digital Civil Society Sessions Begin",
+    content: "Training cohorts are supporting responsible digital adoption.",
+    excerpt: "New sessions help organisations use data, technology and monitoring tools responsibly.",
     imageUrl: "/images/women-development.jpg",
-    category: "Livelihood",
+    category: "Digital",
     publishedAt: "2025-03-30T00:00:00.000Z",
   },
 ];
@@ -90,11 +90,11 @@ const fallbackNews: NewsArticle[] = [
 const fallbackCampaigns: Campaign[] = [
   {
     id: 9101,
-    title: "Clean Water for Rural Families",
-    description: "Install safe drinking water points and local maintenance support in underserved villages.",
+    title: "Capacity Academy for Grassroots Organisations",
+    description: "Support structured learning on governance, finance, leadership, monitoring and organisational sustainability.",
     goalAmount: 2500000,
     raisedAmount: 1876000,
-    category: "Water",
+    category: "Capacity",
     imageUrl: "/images/Rural-Development.png",
     isActive: true,
     createdAt: "2025-05-12T00:00:00.000Z",
@@ -102,11 +102,11 @@ const fallbackCampaigns: Campaign[] = [
   },
   {
     id: 9102,
-    title: "Scholarships for First-Generation Learners",
-    description: "Keep children in school with annual education support, mentoring, and learning material.",
+    title: "Governance and Finance Excellence Initiative",
+    description: "Help NGOs strengthen financial systems, compliance readiness, internal controls and board practices.",
     goalAmount: 1200000,
     raisedAmount: 760000,
-    category: "Education",
+    category: "Governance",
     imageUrl: "/images/education.webp",
     isActive: true,
     createdAt: "2025-04-08T00:00:00.000Z",
@@ -114,11 +114,11 @@ const fallbackCampaigns: Campaign[] = [
   },
   {
     id: 9103,
-    title: "Animal Health and Rescue Camps",
-    description: "Bring veterinary care, vaccination, and rescue support to animals in rural communities.",
+    title: "Civil Society Knowledge Centre",
+    description: "Build practical tools, case studies, webinars and knowledge resources for social-sector organisations.",
     goalAmount: 900000,
     raisedAmount: 410000,
-    category: "Animal Welfare",
+    category: "Knowledge",
     imageUrl: "/images/healthcare.jpg",
     isActive: true,
     createdAt: "2025-03-15T00:00:00.000Z",
@@ -135,20 +135,11 @@ const galleryFallbacks = [
   "/images/education.webp",
 ];
 
-const partners = [
-  { name: "HEIFER", detail: "International" },
-  { name: "CEE", detail: "Centre for Environment Education" },
-  { name: "Rotary", detail: "Service above self" },
-  { name: "GiveIndia", detail: "The power to change lives" },
-  { name: "CAF", detail: "Charities Aid Foundation" },
-  { name: "GUIDESTAR", detail: "India" },
-];
-
 const impactItems = [
-  { icon: Droplets, text: "Provide clean water to 500+ families" },
-  { icon: GraduationCap, text: "Sponsor a child's education for a year" },
-  { icon: PawPrint, text: "Support animal care and rescue" },
-  { icon: HandHeart, text: "Empower women with skill training" },
+  { icon: Building2, text: "Strengthen NGO systems and governance" },
+  { icon: BookOpenCheck, text: "Build learning resources and practical toolkits" },
+  { icon: Network, text: "Connect civil society with partners and platforms" },
+  { icon: Landmark, text: "Support evidence-led sector dialogue" },
 ];
 
 function formatDate(date: string) {
@@ -170,9 +161,9 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
   const newsPanelRef = useRef<HTMLDivElement>(null);
   const campaign = featuredCampaign ?? {
     id: 0,
-    title: "Every Gift. A Lasting Change.",
+    title: "Support Stronger Civil Society.",
     description:
-      "Help us reach more communities with clean water, better education, and care for animals in need.",
+      "Help PLF build knowledge, capacity, governance and collaboration platforms for organisations serving communities across India.",
     goalAmount: 2500000,
     raisedAmount: 1876000,
     category: "Featured",
@@ -188,9 +179,9 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
       gallery.length > 0
         ? gallery.slice(0, 6).map((item, index) => ({
             src: item.imageUrl || galleryFallbacks[index % galleryFallbacks.length],
-            alt: item.caption || "PLEF community moment",
+            alt: item.caption || "PLF civil society moment",
           }))
-        : galleryFallbacks.map((src) => ({ src, alt: "PLEF community moment" })),
+        : galleryFallbacks.map((src) => ({ src, alt: "PLF civil society moment" })),
     [gallery],
   );
   const activeStory = storySlides[storyIndex];
@@ -228,11 +219,11 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
           <article className="min-w-0">
             <div className="mb-5 flex items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Real stories</p>
-                <h3 className="mt-2 font-serif text-2xl font-bold text-primary">Voices of Change</h3>
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Partner learning</p>
+                <h3 className="mt-2 font-serif text-2xl font-bold text-primary">Voices from the Sector</h3>
               </div>
               <Link href="/about" className="inline-flex items-center gap-1 text-xs font-bold text-primary">
-                View All Stories <ArrowRight className="size-3.5" />
+                Read About PLF <ArrowRight className="size-3.5" />
               </Link>
             </div>
             <div className="overflow-hidden rounded-[8px] border bg-card shadow-sm">
@@ -318,8 +309,8 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
           <article className="min-w-0">
             <div className="mb-5 flex items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Gallery</p>
-                <h3 className="mt-2 font-serif text-2xl font-bold text-primary">Moments That Matter</h3>
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Field evidence</p>
+                <h3 className="mt-2 font-serif text-2xl font-bold text-primary">Learning in Practice</h3>
               </div>
               <Link href="/gallery" className="inline-flex items-center gap-1 text-xs font-bold text-primary">
                 View Full Gallery <ArrowRight className="size-3.5" />
@@ -350,7 +341,7 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
             <div className="flex flex-col justify-center p-7 sm:p-10">
               <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-primary-foreground/85">
                 <span className="h-0.5 w-8 bg-accent" />
-                Featured campaign
+                Featured initiative
               </div>
               <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight sm:text-4xl">
                 {campaign.title}
@@ -375,12 +366,12 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
                 <Button asChild variant="secondary" className="rounded-full bg-primary-foreground px-6 text-primary hover:bg-primary-foreground/90">
                   <Link href="/donate">
                     <Heart data-icon="inline-start" />
-                    Donate Now
+                    Support PLF
                     <ArrowRight data-icon="inline-end" />
                   </Link>
                 </Button>
                 <Link href={campaign.id ? `/campaigns/${campaign.id}` : "/campaigns"} className="inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground/88 transition hover:text-primary-foreground">
-                  View Campaign
+                  View Initiative
                   <ArrowRight className="size-4" />
                 </Link>
               </div>
@@ -395,7 +386,7 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
               <div className="w-full rounded-[8px] bg-card p-5 text-card-foreground shadow-2xl sm:p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="h-0.5 w-8 bg-accent" />
-                  <p className="text-sm font-bold text-primary">Your Impact</p>
+                  <p className="text-sm font-bold text-primary">What Your Support Builds</p>
                 </div>
                 <div className="space-y-4">
                   {impactItems.map(({ icon: Icon, text }) => (
@@ -415,12 +406,12 @@ export function HomeImpactShowcase({ featuredCampaign, campaigns, news, gallery 
         <div className="mt-14">
           <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Active campaigns</p>
-              <h3 className="mt-2 font-serif text-3xl font-bold text-primary">Choose a Campaign to Power</h3>
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Active initiatives</p>
+              <h3 className="mt-2 font-serif text-3xl font-bold text-primary">Choose an Initiative to Strengthen</h3>
             </div>
             <Button asChild variant="outline" className="w-fit rounded-full bg-card text-primary">
               <Link href="/campaigns">
-                View All Campaigns
+                View All Initiatives
                 <ArrowRight data-icon="inline-end" />
               </Link>
             </Button>

@@ -1,85 +1,169 @@
 "use client";
-import { Layout } from "@/components/layout/Layout";
-import { useLanguage } from "@/lib/language-context";
-import { Ambulance, BookOpenText, Earth, Handshake, Leaf, Venus } from "lucide-react";
 
-const services  = [
+import { Layout } from "@/components/layout/Layout";
+import {
+  BarChart3,
+  BookOpenCheck,
+  BriefcaseBusiness,
+  Building2,
+  FileSearch,
+  Landmark,
+  Laptop,
+  Scale,
+  Users,
+} from "lucide-react";
+
+const focusAreas = [
   {
-    id: "education",
-    icon: BookOpenText,
-    title: { en: "Education for All", hi: "सभी के लिए शिक्षा" },
-    desc: { en: "Providing school supplies, scholarships, and running evening classes for underprivileged children.", hi: "वंचित बच्चों के लिए स्कूल की आपूर्ति, छात्रवृत्ति प्रदान करना और शाम की कक्षाएं चलाना।" }
+    id: "organisational-development",
+    icon: Building2,
+    title: "Organisational Capacity & Institutional Development",
+    tagline: "Building Organisations That Last",
+    points: ["Organisational strategy", "Governance", "Human resources", "Risk management", "Sustainability"],
   },
   {
-    id: "health",
-    icon: Ambulance,
-    title: { en: "Healthcare Camps", hi: "स्वास्थ्य सेवा शिविर" },
-    desc: { en: "Organizing free medical check-ups, eye camps, and distributing essential medicines in remote villages.", hi: "मुफ्त चिकित्सा जांच, नेत्र शिविर आयोजित करना और दूरदराज के गांवों में आवश्यक दवाएं वितरित करना।" }
+    id: "governance-finance",
+    icon: Scale,
+    title: "Financial Management, Governance & Accountability",
+    tagline: "Building Trust Through Strong Institutions",
+    points: ["Financial planning", "Internal controls", "Audit readiness", "Regulatory compliance", "Transparency"],
   },
   {
-    id: "women",
-    icon: Venus,
-    title: { en: "Women Empowerment", hi: "महिला सशक्तिकरण" },
-    desc: { en: "Vocational training, micro-finance support, and awareness programs to make women financially independent.", hi: "महिलाओं को आर्थिक रूप से स्वतंत्र बनाने के लिए व्यावसायिक प्रशिक्षण, माइक्रो-फाइनेंस सहायता और जागरूकता कार्यक्रम।" }
+    id: "leadership",
+    icon: Users,
+    title: "Leadership & Human Capital Development",
+    tagline: "Developing Leaders for Social Change",
+    points: ["Executive leadership", "Board development", "Mentoring", "Professional development", "Leadership forums"],
   },
   {
-    id: "environment",
-    icon: Leaf,
-    title: { en: "Environmental Protection", hi: "पर्यावरण संरक्षण" },
-    desc: { en: "Tree plantation drives, waste management education, and promoting sustainable agricultural practices.", hi: "वृक्षारोपण अभियान, अपशिष्ट प्रबंधन शिक्षा और टिकाऊ कृषि प्रथाओं को बढ़ावा देना।" }
+    id: "knowledge-research",
+    icon: FileSearch,
+    title: "Knowledge, Research & Learning",
+    tagline: "Turning Experience into Knowledge",
+    points: ["Research", "Case studies", "Policy briefs", "Toolkits", "Communities of practice"],
   },
   {
-    id: "rural",
-    icon: Earth,
-    title: { en: "Rural Development", hi: "ग्रामीण विकास" },
-    desc: { en: "Building basic infrastructure, clean drinking water facilities, and sanitation units in villages.", hi: "गांवों में बुनियादी ढांचे, स्वच्छ पेयजल सुविधाओं और स्वच्छता इकाइयों का निर्माण।" }
+    id: "digital-transformation",
+    icon: Laptop,
+    title: "Digital Transformation & Innovation",
+    tagline: "Enabling a Future-Ready Civil Society",
+    points: ["NGO technology", "Management information systems", "Data protection", "Digital governance", "AI awareness"],
   },
   {
-    id: "disaster",
-    icon: Handshake,
-    title: { en: "Disaster Relief", hi: "आपदा राहत" },
-    desc: { en: "Rapid response during natural calamities, providing food, shelter, and rehabilitation support.", hi: "प्राकृतिक आपदाओं के दौरान त्वरित प्रतिक्रिया, भोजन, आश्रय और पुनर्वास सहायता प्रदान करना।" }
-  }
+    id: "resource-mobilisation",
+    icon: BriefcaseBusiness,
+    title: "Resource Mobilisation & Organisational Sustainability",
+    tagline: "Building Sustainable Organisations",
+    points: ["CSR readiness", "Institutional fundraising", "Proposal development", "Donor engagement", "Partnerships"],
+  },
+  {
+    id: "impact-learning",
+    icon: BarChart3,
+    title: "Monitoring, Evaluation, Learning & Impact",
+    tagline: "From Activities to Evidence of Impact",
+    points: ["Theory of change", "Monitoring systems", "Evaluation", "Outcome measurement", "Impact reporting"],
+  },
+  {
+    id: "policy-dialogue",
+    icon: Landmark,
+    title: "Policy, Advocacy & Civil Society Dialogue",
+    tagline: "Strengthening the Voice of Civil Society",
+    points: ["Policy research", "Sector dialogue", "National consultations", "Evidence-based advocacy", "Roundtables"],
+  },
 ];
 
-export default function Services() {
-  const { t, language } = useLanguage();
+const approach = ["Listen", "Learn", "Build", "Connect", "Measure"];
 
+export default function Services() {
   return (
     <Layout>
-      <div className="bg-primary text-primary-foreground py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold  mb-4">
-            {t("Our Programs", "हमारे कार्यक्रम")}
-          </h1>
-          <p className="text-xl  max-w-2xl mx-auto font-serif">
-            {t(
-              "Comprehensive initiatives designed to create lasting, positive change.",
-              "स्थायी, सकारात्मक बदलाव लाने के लिए डिज़ाइन की गई व्यापक पहल।"
-            )}
-          </p>
+      <section className="bg-primary py-16 text-primary-foreground">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-primary-foreground/80">Focus Areas</p>
+            <h1 className="mt-3 font-serif text-4xl font-bold leading-tight sm:text-5xl">
+              Strengthening the people, systems and institutions behind social change.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/82">
+              PLF supports civil society through knowledge, organisational capacity, leadership, governance,
+              collaboration and evidence-led learning.
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map(({icon: Icon,id,title,desc}) => (
-            <div key={id} className="bg-card rounded-2xl border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <div className="text-4xl mb-6 bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center text-primary">
-               <Icon className=" w-8 h-8 text-primary " />
+      </section>
+
+      <section className="bg-background py-14 sm:py-16">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="grid gap-4 sm:grid-cols-5">
+            {approach.map((step, index) => (
+              <div key={step} className="rounded-[8px] border bg-card p-4 text-center shadow-sm">
+                <p className="text-xs font-bold text-accent">{String(index + 1).padStart(2, "0")}</p>
+                <p className="mt-2 text-sm font-bold text-primary">{step}</p>
               </div>
-              <h3 className="text-2xl font-bold font-serif mb-4 text-foreground">
-                {language === "hi" ? title.hi : title.en}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {language === "hi" ? desc.hi : desc.en}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="bg-[#f4f9fc] py-16 sm:py-20">
+        <div className="container mx-auto px-5 lg:px-8">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-primary">What PLF builds</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-primary sm:text-4xl">
+              Eight priorities for a more capable civil society ecosystem.
+            </h2>
+            <div className="mt-4 h-1 w-10 bg-accent" />
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            {focusAreas.map(({ id, icon: Icon, title, tagline, points }) => (
+              <article key={id} className="rounded-[8px] border bg-card p-6 shadow-sm">
+                <div className="flex gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <Icon className="size-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold uppercase tracking-[.14em] text-muted-foreground">{tagline}</p>
+                    <h3 className="mt-1 font-serif text-xl font-bold text-primary">{title}</h3>
+                  </div>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {points.map((point) => (
+                    <span key={point} className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+                      {point}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-16 sm:py-20">
+        <div className="container mx-auto grid gap-10 px-5 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-primary">Theory of change</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-primary sm:text-4xl">
+              Stronger civil society begins with stronger institutions.
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-muted-foreground">
+              If organisations and professionals have stronger leadership, governance, financial systems, knowledge,
+              technology, networks and resources, they become more effective, accountable and sustainable.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {["Stronger People", "Stronger Organisations", "Better Knowledge", "Stronger Networks", "Better Systems", "Stronger Civil Society"].map((item) => (
+              <div key={item} className="flex items-center gap-3 rounded-[8px] border bg-card p-4 shadow-sm">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <BookOpenCheck className="size-4" />
+                </span>
+                <p className="text-sm font-bold text-foreground">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
-
-
-
