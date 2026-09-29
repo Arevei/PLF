@@ -57,7 +57,7 @@ declare global {
 }
 
 const membershipFees: Record<MembershipType, number> = {
-  general: 0,
+  general: 500,
   active: 1100,
   lifetime: 5100,
 };
@@ -89,6 +89,7 @@ export default function Membership() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [registration, setRegistration] = useState<RegisterResponse | null>(null);
   const [referralCode, setReferralCode] = useState("");
+  const [paymentMode, setPaymentMode] = useState<"razorpay" | "manual">("razorpay");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -108,6 +109,10 @@ export default function Membership() {
 
   useEffect(() => {
     window.setTimeout(() => setReferralCode(captureReferralCodeFromUrl()), 0);
+    fetch("/api/site-settings/payment-modes")
+      .then((response) => response.json())
+      .then((settings) => setPaymentMode(settings.membershipPaymentMode === "manual" ? "manual" : "razorpay"))
+      .catch(() => undefined);
   }, []);
 
   const verifyPayment = async (response: RazorpaySuccess, memberId: number) => {
@@ -156,7 +161,7 @@ export default function Membership() {
         memberId: String(payload.member.id),
         membershipId: payload.member.membershipId,
       },
-      theme: { color: "#be0027" },
+      theme: { color: "#0B4A7F" },
       handler: async (response: RazorpaySuccess) => {
         try {
           setIsVerifying(true);
@@ -260,12 +265,12 @@ export default function Membership() {
               <div className="rounded-xl border bg-zinc-50 p-4 text-center">
                 <Mail className="mx-auto h-5 w-5 text-blue-600" />
                 <p className="mt-2 text-xs font-semibold uppercase text-zinc-500">Step 2</p>
-                <p className="text-sm">{t("Payment QR sent on email", "भुगतान QR ईमेल पर भेजा जाएगा")}</p>
+                <p className="text-sm">{t("Admin approval", "व्यवस्थापक अनुमोदन")}</p>
               </div>
               <div className="rounded-xl border bg-zinc-50 p-4 text-center">
                 <Users className="mx-auto h-5 w-5 text-emerald-600" />
                 <p className="mt-2 text-xs font-semibold uppercase text-zinc-500">Step 3</p>
-                <p className="text-sm">{t("Manual activation by team", "टीम द्वारा मैनुअल सक्रियण")}</p>
+                <p className="text-sm">{t("Certificate and ID issued", "प्रमाणपत्र और आईडी जारी")}</p>
               </div>
             </div>
 
@@ -274,7 +279,7 @@ export default function Membership() {
               <p className="text-muted-foreground">{submittedEmail}</p>
               <p className="mt-3 text-muted-foreground">
                 {t(
-                  "Please watch this inbox. After approval, payment details and QR image will be sent by the foundation team.",
+                  "Please watch this inbox. After approval, your certificate and membership ID card will be sent by the foundation team.",
                   "कृपया इस इनबॉक्स पर ध्यान दें। स्वीकृति के बाद भुगतान विवरण और QR इमेज फाउंडेशन टीम द्वारा भेजी जाएगी।",
                 )}
               </p>
@@ -320,7 +325,7 @@ export default function Membership() {
           <h1 className="text-4xl font-serif font-bold">{t("Become a Member", "Become a Member")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-primary-foreground/80">
             {t(
-              "Submit your membership request and pay the fee according to the selected membership type.",
+              paymentMode === "razorpay" ? "Submit your membership request and pay the fee according to the selected membership type." : "Submit your membership request for foundation approval. No membership payment is required in manual mode.",
               "अपना सदस्यता अनुरोध जमा करें और चुने गए सदस्यता प्रकार के अनुसार शुल्क भुगतान करें।",
             )}
           </p>
@@ -381,14 +386,14 @@ export default function Membership() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="general">General - ₹0</SelectItem>
-                  <SelectItem value="active">Active - ₹1,100</SelectItem>
-                  <SelectItem value="lifetime">Lifetime - ₹5,100</SelectItem>
+                  <SelectItem value="general">General{paymentMode === "razorpay" ? " - ₹500" : ""}</SelectItem>
+                  <SelectItem value="active">Active{paymentMode === "razorpay" ? " - ₹1,100" : ""}</SelectItem>
+                  <SelectItem value="lifetime">Lifetime{paymentMode === "razorpay" ? " - ₹5,100" : ""}</SelectItem>
                 </SelectContent>
               </Select>
-              <p className="mt-2 text-sm text-muted-foreground">
+              {paymentMode === "razorpay" && <p className="mt-2 text-sm text-muted-foreground">
                 {t("Membership fee", "सदस्यता शुल्क")}: <span className="font-semibold text-foreground">₹{selectedFee}</span>
-              </p>
+              </p>}
             </div>
 
             <div className="md:col-span-2">

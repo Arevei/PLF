@@ -242,7 +242,7 @@ export default function Dashboard() {
         memberId: String(user.id),
         membershipId: user.membershipId,
       },
-      theme: { color: "#be0027" },
+      theme: { color: "#0B4A7F" },
       handler: async (response: RazorpaySuccess) => {
         try {
           const verifyResponse = await fetch("/api/membership-payments/verify", {
@@ -405,11 +405,15 @@ export default function Dashboard() {
     setCopiedLink(type);
     window.setTimeout(() => setCopiedLink(null), 1800);
   };
-  const membershipSteps = [
+  const membershipSteps = user.payment?.mode === "razorpay" ? [
     { label: "Application submitted", detail: "Your details are saved.", icon: CheckCircle2 },
     { label: "Payment", detail: "Complete membership fee.", icon: CreditCard },
     { label: "Admin approval", detail: "Foundation team activation.", icon: Clock },
     { label: "Certificate", detail: "Issued after activation.", icon: Award },
+  ] : [
+    { label: "Application submitted", detail: "Your details are saved.", icon: CheckCircle2 },
+    { label: "Admin approval", detail: "Foundation team review and activation.", icon: Clock },
+    { label: "Certificate", detail: "Issued automatically after approval.", icon: Award },
   ];
   const profileInitials = user?.name
     .split(/\s+/)
@@ -837,7 +841,7 @@ export default function Dashboard() {
                 )}
               </div>
 
-              <div className="rounded-xl border bg-background p-4">
+              {user.payment?.status === "paid" && <div className="rounded-xl border bg-background p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-semibold text-foreground">{t("Membership Receipt", "सदस्यता रसीद")}</p>
@@ -853,7 +857,7 @@ export default function Dashboard() {
                     </a>
                   </Button>
                 )}
-              </div>
+              </div>}
 
               <div className="rounded-xl border bg-background p-4">
                 <div className="flex items-start justify-between gap-3">

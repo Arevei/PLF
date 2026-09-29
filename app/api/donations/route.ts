@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, nextSequence } from "@/lib/db";
-import { sendAdminDonationNotificationEmail, sendDonationReceiptEmail } from "@/lib/email";
-import { issueReferralAchievementIfEligible } from "@/lib/referral-achievement-service";
+import { sendAdminDonationNotificationEmail } from "@/lib/email";
 import { getSession } from "@/lib/session";
+import { getDonationPaymentMode } from "@/lib/site-settings";
 
 function generateReceiptNumber() {
   return `RCP-NSF-${Date.now().toString().slice(-8)}-${Math.floor(Math.random() * 9000) + 1000}`;
@@ -21,11 +21,12 @@ type DonationDoc = {
   campaignId: number | null;
   purpose: string;
   receiptNumber: string;
-  status: "created" | "paid";
+  proofImageUrl?: string | null;
+  status: "created" | "pending_review" | "paid" | "rejected";
   referral?: ReferralInfo | null;
   payment: {
     mode: "manual" | "razorpay";
-    status: "created" | "paid";
+    status: "created" | "pending_review" | "paid";
     amount: number;
     currency: "INR";
     orderId?: string;
@@ -64,10 +65,6 @@ async function getReferralInfo(db: Awaited<ReturnType<typeof getDb>>, code: stri
     memberName: referringMember.name,
     referredAt: new Date(),
   };
-}
-
-function getDonationPaymentMode(): "manual" | "razorpay" {
-  return process.env.DONATION_PAYMENT_MODE === "manual" ? "manual" : "razorpay";
 }
 
 async function createRazorpayOrder(donation: { id: number; amount: number; receiptNumber: string; campaignId: number | null; purpose: string }) {
@@ -126,6 +123,7 @@ function toResponse(donation: DonationDoc, payment?: { provider: "razorpay"; key
     receiptNumber: donation.receiptNumber,
     status: donation.status,
     paymentStatus: donation.payment.status,
+    proofImageUrl: donation.proofImageUrl ?? null,
     referral: donation.referral ?? null,
     payment,
     createdAt: donation.createdAt.toISOString(),
@@ -134,7 +132,7 @@ function toResponse(donation: DonationDoc, payment?: { provider: "razorpay"; key
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { amount, donorName, donorEmail, donorPhone, donorPan, donorAddress, campaignId, purpose, referralCode } = body;
+  const { amount, donorName, donorEmail, donorPhone, donorPan, donorAddress, campaignId, purpose, referralCode, proofImageUrl } = body;
   const donationAmount = Number(amount);
 
   if (!donationAmount || donationAmount < MIN_DONATION_AMOUNT || !purpose) {
@@ -157,7 +155,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "donor name and email are required" }, { status: 400 });
     }
 
-    const paymentMode = getDonationPaymentMode();
+    const paymentMode = await getDonationPaymentMode();
+    if (paymentMode === "manual" && !String(proofImageUrl ?? "").trim()) {
+      return NextResponse.json({ error: "Payment proof screenshot is required" }, { status: 400 });
+    }
     const donationId = await nextSequence("donations");
     const receiptNumber = generateReceiptNumber();
     const normalizedCampaignId = campaignId ? Number(campaignId) : null;
@@ -184,11 +185,12 @@ export async function POST(req: NextRequest) {
       campaignId: normalizedCampaignId,
       purpose,
       receiptNumber,
-      status: paymentMode === "razorpay" ? "created" : "paid",
+      proofImageUrl: paymentMode === "manual" ? String(proofImageUrl).trim() : null,
+      status: paymentMode === "razorpay" ? "created" : "pending_review",
       referral,
       payment: {
         mode: paymentMode,
-        status: paymentMode === "razorpay" ? "created" : "paid",
+        status: paymentMode === "razorpay" ? "created" : "pending_review",
         amount: donationAmount,
         currency: "INR",
         orderId: razorpayOrder?.orderId,
@@ -200,30 +202,11 @@ export async function POST(req: NextRequest) {
 
     await db.collection<DonationDoc>("donations").insertOne(donation);
 
-    if (paymentMode === "manual" && normalizedCampaignId) {
-      await db.collection("campaigns").updateOne(
-        { id: normalizedCampaignId },
-        { $inc: { raisedAmount: donationAmount, donorCount: 1 } },
-      );
-    }
-
-    if (paymentMode === "manual" && referral) {
-      await issueReferralAchievementIfEligible(db, referral.memberId, req.url);
-    }
-
-    let emailSent = false;
-    if (paymentMode === "manual") {
-      try {
-        await sendDonationReceiptEmail(donation, req.url);
-        emailSent = true;
-      } catch (emailError) {
-        console.error("Donation receipt email failed:", emailError);
-      }
-    }
+    const emailSent = false;
 
     let adminEmailSent = true;
     try {
-      await sendAdminDonationNotificationEmail(donation, req.url, paymentMode === "manual" ? "paid" : "created");
+      await sendAdminDonationNotificationEmail(donation, req.url, paymentMode === "manual" ? "pending review" : "created");
     } catch (adminEmailError) {
       adminEmailSent = false;
       console.error("Admin donation notification failed:", adminEmailError);

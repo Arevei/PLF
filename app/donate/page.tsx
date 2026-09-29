@@ -14,6 +14,7 @@ import Image from "next/image";
 import { loadRazorpayScript, type RazorpaySuccess } from "@/lib/razorpay-client";
 import { captureReferralCodeFromUrl } from "@/lib/referral-code";
 import { PaymentWaitingOverlay } from "@/components/ui/payment-waiting-overlay";
+import { PaymentProofUpload } from "@/components/payment-proof-upload";
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000, 25000];
 const DONATION_QR_IMAGE = "/QR-image.png";
@@ -36,11 +37,14 @@ export default function Donate() {
   const [isPaying, setIsPaying] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [paymentMode, setPaymentMode] = useState<"razorpay" | "manual">("razorpay");
+  const [proofImageUrl, setProofImageUrl] = useState("");
 
   const createDonation = useCreateDonation();
 
   useEffect(() => {
     window.setTimeout(() => setReferralCode(captureReferralCodeFromUrl()), 0);
+    fetch("/api/site-settings/payment-modes").then((response) => response.json()).then((settings) => setPaymentMode(settings.donationPaymentMode === "manual" ? "manual" : "razorpay")).catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -73,9 +77,8 @@ export default function Donate() {
 
   const startRazorpayPayment = async (donation: NonNullable<typeof createDonation.data>) => {
     if (!donation.payment) {
-      setReceipt(donation.receiptNumber);
-      setReceiptContact(donation.donorEmail);
-      toast({ title: t("Donation recorded! Thank you.", "दान दर्ज किया गया! धन्यवाद।") });
+      toast({ title: t("Payment proof submitted for admin verification.", "भुगतान प्रमाण व्यवस्थापक सत्यापन के लिए जमा किया गया।") });
+      setProofImageUrl("");
       return;
     }
 
@@ -104,7 +107,7 @@ export default function Donate() {
         receiptNumber: donation.receiptNumber,
         purpose: donation.purpose,
       },
-      theme: { color: "#be0027" },
+      theme: { color: "#0B4A7F" },
       handler: async (response: RazorpaySuccess) => {
         try {
           setIsVerifying(true);
@@ -145,9 +148,13 @@ export default function Donate() {
       toast({ title: t("Please fill all required fields", "कृपया सभी आवश्यक फ़ील्ड भरें"), variant: "destructive" });
       return;
     }
+    if (paymentMode === "manual" && !proofImageUrl) {
+      toast({ title: "Please upload the payment proof screenshot", variant: "destructive" });
+      return;
+    }
 
     createDonation.mutate(
-      { data: { amount: finalAmount, donorName, donorEmail, donorPhone, donorPan, donorAddress, purpose, referralCode: referralCode || undefined } },
+      { data: { amount: finalAmount, donorName, donorEmail, donorPhone, donorPan, donorAddress, purpose, referralCode: referralCode || undefined, proofImageUrl: proofImageUrl || undefined } },
       {
         onSuccess: (donation) => startRazorpayPayment(donation),
         onError: () => {
@@ -295,6 +302,7 @@ export default function Donate() {
                   </SelectContent>
                 </Select>
               </div>
+              {paymentMode === "manual" && <PaymentProofUpload value={proofImageUrl} onChange={setProofImageUrl} />}
               <Button
                 data-testid="button-donate-submit"
                 type="submit"
@@ -357,4 +365,3 @@ export default function Donate() {
     </Layout>
   );
 }
-

@@ -196,7 +196,7 @@ export async function sendAdminMembershipSignupNotificationEmail(
 export async function sendAdminDonationNotificationEmail(
   donation: DonationReceiptRecord,
   requestUrl: string,
-  event: "created" | "paid" = "created",
+  event: "created" | "paid" | "pending review" = "created",
 ) {
   const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || new URL(requestUrl).origin;
@@ -209,7 +209,7 @@ export async function sendAdminDonationNotificationEmail(
   const adminNotificationEmail = requireAdminNotificationEmail();
   const paymentMode = safeText(donation.payment?.mode).replace(/[_-]+/g, " ");
   const paymentStatus = safeText(donation.payment?.status || donation.status).replace(/[_-]+/g, " ");
-  const heading = event === "paid" ? "Donation Payment Completed" : "New Donation Submitted";
+  const heading = event === "paid" ? "Donation Payment Completed" : event === "pending review" ? "Manual Donation Awaiting Review" : "New Donation Submitted";
   const intro =
     event === "paid"
       ? "A donation payment has been completed successfully."
@@ -228,6 +228,7 @@ export async function sendAdminDonationNotificationEmail(
         <tr><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">Donation Status</td><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">${safeText(donation.status)}</td></tr>
         <tr><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">Payment Status</td><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">${paymentStatus.toUpperCase()} (${paymentMode})</td></tr>
         <tr><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">Payment Reference</td><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">${safeText(donation.payment?.paymentId || donation.payment?.orderId || donation.payment?.receipt)}</td></tr>
+        ${donation.proofImageUrl ? `<tr><td style="padding: 6px 10px; border: 1px solid #e4e4e7;">Payment Proof</td><td style="padding: 6px 10px; border: 1px solid #e4e4e7;"><a href="${donation.proofImageUrl}">View screenshot</a></td></tr>` : ""}
       </table>
       <p style="color: #71717a;">Please open the admin panel to review this donation record.</p>
     `;

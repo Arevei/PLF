@@ -154,8 +154,8 @@ export async function POST(req: NextRequest) {
 
     const id = await nextSequence("members");
     const selectedMembershipType = membershipType ?? "general";
-    const paymentMode = getPaymentMode();
-    const amount = getMembershipFee(selectedMembershipType);
+    const paymentMode = await getPaymentMode();
+    const amount = paymentMode === "razorpay" ? getMembershipFee(selectedMembershipType) : 0;
     const membershipId = generateMembershipId();
     const referral = await getReferralInfo(db, normalizeReferralCode(referralCode));
     const razorpayOrder =
@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
       membershipId,
       status: paymentMode === "razorpay" ? "payment_pending" : "pending",
       certificateNumber: null,
-      payment: {
+      payment: paymentMode === "razorpay" ? {
         mode: paymentMode,
         status: paymentMode === "razorpay" ? "created" : "manual_review",
         amount,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
         orderId: razorpayOrder?.orderId,
         receipt: razorpayOrder?.receipt,
         createdAt: new Date(),
-      },
+      } : undefined,
       referral,
       password: await hashPassword(String(password)),
       photo: photo || null,

@@ -17,6 +17,7 @@ export interface DonationReceiptRecord {
   campaignId?: number | null;
   purpose: string;
   receiptNumber: string;
+  proofImageUrl?: string | null;
   status?: string;
   createdAt: Date | string;
   payment?: {
@@ -159,7 +160,7 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
 
   doc.setFillColor(248, 250, 252);
   doc.rect(0, 0, 210, 297, "F");
-  doc.setFillColor(190, 0, 39);
+  doc.setFillColor(11, 74, 127);
   doc.rect(0, 0, 210, 48, "F");
   doc.setFillColor(255, 255, 255);
   doc.roundedRect(14, cardTop, 182, cardHeight, 3, 3, "F");
@@ -187,11 +188,11 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
     doc.text(HINDI_VERSE, 105, 36, { align: "center" });
   }
 
-  doc.setFillColor(255, 245, 247);
+  doc.setFillColor(244, 249, 252);
   doc.roundedRect(22, 48, 166, 14, 2, 2, "F");
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7);
-  doc.setTextColor(190, 0, 39);
+  doc.setTextColor(11, 74, 127);
   doc.text("RECEIPT NO.", 30, 52);
   doc.text("PAID ON", 96, 52);
   doc.text("STATUS", 150, 52);
@@ -217,9 +218,9 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(11);
-  doc.setTextColor(190, 0, 39);
+  doc.setTextColor(11, 74, 127);
   doc.text("Donor Details", 22, 102);
-  doc.setDrawColor(244, 63, 94);
+  doc.setDrawColor(6, 124, 193);
   doc.line(22, 104, 188, 104);
   drawInfoRow(doc, "Name", safeText(donation.donorName), 22, 112, 78);
   drawInfoRow(doc, "PAN", safeText(donation.donorPan), 112, 112, 60);
@@ -229,9 +230,9 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(11);
-  doc.setTextColor(190, 0, 39);
+  doc.setTextColor(11, 74, 127);
   doc.text("Payment & 80G Details", 22, 154);
-  doc.setDrawColor(244, 63, 94);
+  doc.setDrawColor(6, 124, 193);
   doc.line(22, 156, 188, 156);
   drawInfoRow(doc, "Payment Mode", paymentMode.replace(/[_-]+/g, " ").toUpperCase(), 22, 163, 60);
   drawInfoRow(doc, "Payment Ref.", paymentReference, 92, 163, 92);
@@ -239,7 +240,7 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
   drawInfoRow(doc, "80G Reg. No.", safeText(taxExemption.registrationNumber), 92, 174, 92);
   drawInfoRow(doc, "80G Validity", safeText(taxExemption.validity), 22, 185, 60);
 
-  doc.setDrawColor(244, 63, 94);
+  doc.setDrawColor(6, 124, 193);
   doc.setLineWidth(0.2);
   doc.roundedRect(108, 192, 78, 30, 2, 2);
 
@@ -252,7 +253,7 @@ export async function generateDonationReceiptPdf(donation: DonationReceiptRecord
   doc.addImage(qrDataUrl, "PNG", 158, 196, 18, 18);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(6);
-  doc.setTextColor(190, 0, 39);
+  doc.setTextColor(11, 74, 127);
   doc.text("SCAN TO VERIFY", 167, 218, { align: "center" });
 
   drawDigitalStamp(doc, 126, 204);

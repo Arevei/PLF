@@ -53,7 +53,7 @@ function getLogo() {
 }
 
 function addHeader(doc: jsPDF, donorName: string, donorEmail: string, totalAmount: number) {
-  doc.setFillColor(255, 252, 248);
+  doc.setFillColor(244, 249, 252);
   doc.rect(0, 0, 210, 297, "F");
 
   const logo = getLogo();
@@ -63,7 +63,7 @@ function addHeader(doc: jsPDF, donorName: string, donorEmail: string, totalAmoun
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
-  doc.setTextColor(190, 0, 39);
+  doc.setTextColor(11, 74, 127);
   doc.text("Donation History", 18, 46);
 
   doc.setFont("helvetica", "normal");
@@ -74,12 +74,12 @@ function addHeader(doc: jsPDF, donorName: string, donorEmail: string, totalAmoun
   doc.text(`Total Paid Donations: INR ${totalAmount.toLocaleString("en-IN")}`, 18, 69);
   doc.text(`Generated: ${formatDate(new Date())}`, 18, 76);
 
-  doc.setDrawColor(190, 0, 39);
+  doc.setDrawColor(11, 74, 127);
   doc.line(18, 84, 192, 84);
 }
 
 function addTableHeader(doc: jsPDF, y: number) {
-  doc.setFillColor(190, 0, 39);
+  doc.setFillColor(11, 74, 127);
   doc.rect(18, y - 6, 174, 9, "F");
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);

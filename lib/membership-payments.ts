@@ -1,8 +1,10 @@
+import { getMembershipPaymentMode } from "@/lib/site-settings";
+
 export type MembershipType = "general" | "active" | "lifetime";
 export type PaymentMode = "manual" | "razorpay";
 
 export const membershipFees: Record<MembershipType, number> = {
-  general: 0,
+  general: 500,
   active: 1100,
   lifetime: 5100,
 };
@@ -15,8 +17,8 @@ export function getMembershipFee(type: string | undefined) {
   return membershipFees.general;
 }
 
-export function getPaymentMode(): PaymentMode {
-  return process.env.PAYMENT_MODE === "razorpay" ? "razorpay" : "manual";
+export function getPaymentMode(): Promise<PaymentMode> {
+  return getMembershipPaymentMode();
 }
 
 export function generateCertificateNumber() {

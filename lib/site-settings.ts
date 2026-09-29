@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
 
 export type SiteLanguage = "en" | "hi";
+export type PaymentMode = "razorpay" | "manual";
 
 type SiteSettingDoc = {
   key: string;
@@ -9,6 +10,8 @@ type SiteSettingDoc = {
 };
 
 const DEFAULT_LANGUAGE_KEY = "defaultLanguage";
+const MEMBERSHIP_PAYMENT_MODE_KEY = "membershipPaymentMode";
+const DONATION_PAYMENT_MODE_KEY = "donationPaymentMode";
 
 export async function getDefaultLanguage(): Promise<SiteLanguage> {
   const db = await getDb();
@@ -17,4 +20,19 @@ export async function getDefaultLanguage(): Promise<SiteLanguage> {
     return row.value;
   }
   return "hi";
+}
+
+async function getPaymentMode(key: string, envValue?: string): Promise<PaymentMode> {
+  const db = await getDb();
+  const row = await db.collection<SiteSettingDoc>("siteSettings").findOne({ key });
+  if (row?.value === "manual" || row?.value === "razorpay") return row.value;
+  return envValue === "manual" ? "manual" : "razorpay";
+}
+
+export function getMembershipPaymentMode() {
+  return getPaymentMode(MEMBERSHIP_PAYMENT_MODE_KEY, process.env.PAYMENT_MODE);
+}
+
+export function getDonationPaymentMode() {
+  return getPaymentMode(DONATION_PAYMENT_MODE_KEY, process.env.DONATION_PAYMENT_MODE);
 }

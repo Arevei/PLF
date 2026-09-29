@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Users, Target, Heart } from "lucide-react";
 import { loadRazorpayScript, type RazorpaySuccess } from "@/lib/razorpay-client";
 import { captureReferralCodeFromUrl } from "@/lib/referral-code";
+import { PaymentProofUpload } from "@/components/payment-proof-upload";
 
 const MIN_DONATION_AMOUNT = 100;
 
@@ -67,6 +68,8 @@ export default function CampaignDetail() {
   const [amount, setAmount] = useState("");
   const [isPaying, setIsPaying] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [paymentMode, setPaymentMode] = useState<"razorpay" | "manual">("razorpay");
+  const [proofImageUrl, setProofImageUrl] = useState("");
 
   const { data: campaign, isLoading } = useGetCampaign(id, {
     query: { enabled: !!id, queryKey: getGetCampaignQueryKey(id) },
@@ -76,6 +79,7 @@ export default function CampaignDetail() {
 
   useEffect(() => {
     window.setTimeout(() => setReferralCode(captureReferralCodeFromUrl()), 0);
+    fetch("/api/site-settings/payment-modes").then((response) => response.json()).then((settings) => setPaymentMode(settings.donationPaymentMode === "manual" ? "manual" : "razorpay")).catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -108,8 +112,8 @@ export default function CampaignDetail() {
 
   const startRazorpayPayment = async (donation: NonNullable<typeof createDonation.data>) => {
     if (!donation.payment) {
-      toast({ title: t("Thank you for your support!", "आपके सहयोग के लिए धन्यवाद!") });
-      await queryClient.invalidateQueries({ queryKey: getGetCampaignQueryKey(id) });
+      toast({ title: t("Payment proof submitted for admin verification.", "भुगतान प्रमाण व्यवस्थापक सत्यापन के लिए जमा किया गया।") });
+      setProofImageUrl("");
       return;
     }
 
@@ -138,7 +142,7 @@ export default function CampaignDetail() {
         receiptNumber: donation.receiptNumber,
         campaignId: donation.campaignId ? String(donation.campaignId) : "",
       },
-      theme: { color: "#be0027" },
+      theme: { color: "#0B4A7F" },
       handler: async (response: RazorpaySuccess) => {
         try {
           await verifyDonationPayment(donation.id, response);
@@ -172,6 +176,10 @@ export default function CampaignDetail() {
       toast({ title: t("Please fill all fields", "कृपया सभी फ़ील्ड भरें"), variant: "destructive" });
       return;
     }
+    if (paymentMode === "manual" && !proofImageUrl) {
+      toast({ title: "Please upload the payment proof screenshot", variant: "destructive" });
+      return;
+    }
     createDonation.mutate(
       {
         data: {
@@ -184,6 +192,7 @@ export default function CampaignDetail() {
           campaignId: id,
           purpose: campaign?.title ?? "Campaign donation",
           referralCode: referralCode || undefined,
+          proofImageUrl: proofImageUrl || undefined,
         },
       },
       {
@@ -273,6 +282,7 @@ export default function CampaignDetail() {
                   }}
                 />
               </div>
+              {paymentMode === "manual" && <PaymentProofUpload value={proofImageUrl} onChange={setProofImageUrl} />}
               {user ? (
                 <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-sm text-primary">
                   {t("Donating as", "दानकर्ता")}: <span className="font-semibold">{user.name}</span> ({user.email})
@@ -320,8 +330,6 @@ export default function CampaignDetail() {
     </Layout>
   );
 }
-
-
 
 
 

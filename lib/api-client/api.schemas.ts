@@ -188,6 +188,7 @@ export interface Donation {
   receiptNumber: string;
   status?: string;
   paymentStatus?: string;
+  proofImageUrl?: string | null;
   /** @nullable */
   referral?: ReferralInfo | null;
   payment?: {
@@ -211,6 +212,7 @@ export interface DonationInput {
   campaignId?: number;
   purpose: string;
   referralCode?: string;
+  proofImageUrl?: string;
 }
 
 export interface NewsArticle {
