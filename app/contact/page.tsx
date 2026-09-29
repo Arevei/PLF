@@ -51,7 +51,7 @@ export default function Contact() {
               <h3 className="font-semibold text-foreground mb-1">{t("Address", "पता")}</h3>
               <p className="text-sm text-muted-foreground">
                 {t(
-                  "C/o Mayank Singh Sikarwar, Vill. & Po. Tihar Thana, Rampura (Jalaun), Jalaun, Jalaun, Uttar Pradesh, India, 285127",
+                  "104A, Exotica Eastern Court, Crossing Republic, Ghaziabad, U.P - 201016",
                   " केयर ऑफ़ मयंक सिंह सिकरवार, ग्राम व पोस्ट टीहर थाना, रामपुरा (जालौन), जालौन, जालौन, उत्तर प्रदेश, भारत, 285127"
                 )}
               </p>
@@ -68,9 +68,6 @@ export default function Contact() {
                 <a href="tel:+919999974145" className="text-muted-foreground hover:text-primary transition-colors">
                   +91 9999974145
                 </a>
-                <a href="tel:+918851626084" className="text-muted-foreground hover:text-primary transition-colors">
-                  +91 88516 26084
-                </a>
               </div>
             </div>
           </div>
@@ -82,18 +79,18 @@ export default function Contact() {
             <div>
               <h3 className="font-semibold text-foreground mb-1">{t("Email", "ईमेल")}</h3>
               <a 
-                href="https://mail.google.com/mail/u/0/?to=nisvarthjansevango@gmail.com&su=Niswarthjan+Seva+Foundation+Support&fs=1&tf=cm"
+                href="https://mail.google.com/mail/u/0/?to=govindrajmichael2@gmail.com&su=Niswarthjan+Seva+Foundation+Support&fs=1&tf=cm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:block text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                nisvarthjansevango@gmail.com
+                govindrajmichael2@gmail.com
               </a>
               <a 
-                href="mailto:nisvarthjansevango@gmail.com?subject=Niswarthjan+Seva+Foundation+Support"
+                href="mailto:govindrajmichael2@gmail.com?subject=Niswarthjan+Seva+Foundation+Support"
                 className="md:hidden text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                nisvarthjansevango@gmail.com
+                govindrajmichael2@gmail.com
               </a>
             </div>
           </div>
@@ -145,7 +142,7 @@ export default function Contact() {
               allowFullScreen 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=C%2Fo%20Mayank%20Singh%20Sikarwar%2C%20Vill.%20%26%20Po.%20Tihar%20Thana%2C%20Rampura%20(Jalaun)%2C%20Jalaun%2C%20Jalaun%2C%20Uttar%20Pradesh%2C%20India%2C%20285127&output=embed"
+                src="https://www.google.com/maps/embed/v1/place?q=104A%2C%20Exotica%20Eastern%20Court%2C%20Crossing%20Republic%2C%20Ghaziabad%2CU.P%20-201016&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
             />
           </div>
         </div>
@@ -153,7 +150,5 @@ export default function Contact() {
     </Layout>
   );
 }
-
-
 
 

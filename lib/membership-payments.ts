@@ -2,7 +2,7 @@ export type MembershipType = "general" | "active" | "lifetime";
 export type PaymentMode = "manual" | "razorpay";
 
 export const membershipFees: Record<MembershipType, number> = {
-  general: 500,
+  general: 0,
   active: 1100,
   lifetime: 5100,
 };

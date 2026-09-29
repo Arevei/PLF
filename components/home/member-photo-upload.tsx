@@ -77,13 +77,13 @@ export function MemberPhotoUpload({ value, onChange, label }: Props) {
       <div className="flex flex-col items-center gap-3 sm:flex-row">
         {/* Photo preview area */}
         <div
-          className="relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-2 border-dashed border-rose-300 bg-rose-50 transition-colors hover:border-rose-400"
+          className="relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-2 border-dashed border-primary/40 bg-primary/5 transition-colors hover:border-primary"
           onClick={() => !isUploading && inputRef.current?.click()}
         >
           {preview ? (
             <img src={preview} alt="Preview" className="h-full w-full object-cover" />
           ) : (
-            <div className="flex h-full flex-col items-center justify-center text-rose-400">
+            <div className="flex h-full flex-col items-center justify-center text-primary">
               <Camera className="h-8 w-8" />
               <span className="mt-1 text-xs">Add Photo</span>
             </div>
@@ -101,7 +101,7 @@ export function MemberPhotoUpload({ value, onChange, label }: Props) {
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="flex items-center gap-2 rounded-md border border-rose-400 bg-white px-4 py-2 text-sm font-semibold text-rose-700 transition-colors hover:bg-rose-50 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-md border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/5 disabled:opacity-50"
               disabled={isUploading}
             >
               <Upload className="h-4 w-4" />

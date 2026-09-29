@@ -60,7 +60,7 @@ export function Footer() {
                 <h3 className="font-semibold text-white mb-1">{t("Address", "पता")}</h3>
                 <p className="text-sm text-white/80">
                   {t(
-                    "R Govind Raji, 104A, Exotica Eastern Court, Ghaziabad, IN",
+                    "104A, Exotica Eastern Court, Crossing Republic, Ghaziabad, U.P - 201016",
                     "आर गोविंद राजी, 104ए, एक्सोटिका ईस्टर्न कोर्ट, गाजियाबाद, भारत"
                   )}
                 </p>
@@ -77,9 +77,6 @@ export function Footer() {
                   <a href="tel:+919999974145" className="text-white/80 hover:text-accent transition-colors">
                     +91 9999974145
                   </a>
-                  <a href="tel:+918851626084" className="text-white/80 hover:text-accent transition-colors">
-                    +91 88516 26084
-                  </a>
                 </div>
               </div>
             </div>
@@ -91,18 +88,18 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold text-white mb-1">{t("Email", "ईमेल")}</h3>
                 <a 
-                  href="https://mail.google.com/mail/u/0/?to=nisvarthjansevango@gmail.com&su=Niswarthjan+Seva+Foundation+Support&fs=1&tf=cm"
+                  href="https://mail.google.com/mail/u/0/?to=govindrajmichael2@gmail.com&su=Niswarthjan+Seva+Foundation+Support&fs=1&tf=cm"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hidden md:inline text-sm text-white/80 hover:text-accent transition-colors"
                 >
-                  nisvarthjansevango@gmail.com
+                  govindrajmichael2@gmail.com
                 </a>
                 <a 
-                  href="mailto:nisvarthjansevango@gmail.com?subject=Niswarthjan+Seva+Foundation+Support"
+                  href="mailto:govindrajmichael2@gmail.com?subject=Niswarthjan+Seva+Foundation+Support"
                   className="md:hidden text-sm text-white/80 hover:text-accent transition-colors"
                 >
-                  nisvarthjansevango@gmail.com
+                  govindrajmichael2@gmail.com
                 </a>
               </div>
             </div>

@@ -57,7 +57,7 @@ declare global {
 }
 
 const membershipFees: Record<MembershipType, number> = {
-  general: 500,
+  general: 0,
   active: 1100,
   lifetime: 5100,
 };
@@ -381,7 +381,7 @@ export default function Membership() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="general">General - ₹500</SelectItem>
+                  <SelectItem value="general">General - ₹0</SelectItem>
                   <SelectItem value="active">Active - ₹1,100</SelectItem>
                   <SelectItem value="lifetime">Lifetime - ₹5,100</SelectItem>
                 </SelectContent>
