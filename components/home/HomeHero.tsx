@@ -1,71 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Network, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const framework = ["People", "Organisations", "Networks", "Systems", "Policy"];
+import { ArrowUpRight } from "lucide-react";
 
 export function HomeHero() {
   return (
-    <section id="mission" className="relative overflow-hidden bg-[#f4f9fc] py-16 sm:py-20">
-      <div className="container relative mx-auto grid items-center gap-12 px-5 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
-        <div className="max-w-xl">
-          <p className="text-sm font-bold uppercase tracking-[.22em] text-primary">National civil society platform</p>
-          <h2 className="mt-4 font-serif text-4xl font-black leading-tight text-[#12385d] sm:text-5xl">
-            We strengthen the organisations that create change.
-          </h2>
-          <div className="my-7 h-1 w-14 bg-accent" />
-          <p className="max-w-lg text-base leading-8 text-[#4b6d89]">
-            PLF helps NGOs, civil-society organisations and social-sector professionals build the knowledge, governance,
-            financial systems, leadership and partnerships needed for sustainable impact.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full px-7 shadow-lg shadow-primary/20">
-              <Link href="/about">
-                Our Approach
-                <ArrowRight data-icon="inline-end" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-primary/25 bg-white/70 px-7 text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link href="/contact">
-                <Network data-icon="inline-start" />
-                Collaborate
-              </Link>
-            </Button>
-          </div>
+    <section id="mission" className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-14">
+        <div className="md:col-span-5">
+          <div className="mb-5 flex items-center gap-2"><span className="h-px w-7 bg-primary" /><span className="text-[11px] font-bold uppercase tracking-[.22em] text-primary">Our mission</span></div>
+          <h2 className="editorial-heading text-5xl leading-[.92] text-[#172d3f] sm:text-6xl lg:text-7xl">We Strengthen the Organisations That Create Change.</h2>
+          <Link href="/about" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#172d3f]/25 px-5 py-2.5 text-sm font-semibold transition hover:border-primary hover:text-primary">Our Approach <ArrowUpRight className="size-4" /></Link>
         </div>
-
-        <div className="grid gap-5">
-          <div className="rounded-[8px] border bg-card p-6 shadow-sm">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <ShieldCheck className="size-5" />
-              </span>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[.18em] text-primary">Core proposition</p>
-                <h3 className="font-serif text-2xl font-bold text-foreground">Knowledge - Capacity - Collaboration - Impact</h3>
-              </div>
-            </div>
-            <p className="text-sm leading-6 text-muted-foreground">
-              PLF acts as a multiplier for social impact by improving the people, systems and institutions that serve
-              communities across India.
-            </p>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-5">
-            {framework.map((item, index) => (
-              <div key={item} className="rounded-[8px] border bg-card p-4 text-center shadow-sm">
-                <p className="text-xs font-bold text-accent">{String(index + 1).padStart(2, "0")}</p>
-                <p className="mt-2 text-sm font-bold text-primary">{item}</p>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center md:col-span-7 md:pt-7">
+          <p className="max-w-2xl text-base leading-8 text-[#4d5f69] md:text-lg">PLF helps NGOs, civil-society organisations and social-sector professionals build the knowledge, governance, financial systems, leadership and partnerships needed for sustainable impact. By strengthening institutions and connecting people with practical evidence, we help communities create change that lasts.</p>
         </div>
       </div>
     </section>
   );
 }
-
-export default HomeHero;

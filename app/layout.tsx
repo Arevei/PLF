@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans_Devanagari } from "next/font/google";
+import { DM_Sans, Geist_Mono, Noto_Sans_Devanagari, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sans = DM_Sans({
+  variable: "--font-sans-display",
   subsets: ["latin"],
+});
+
+const display = Playfair_Display({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -36,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${devanagari.variable} h-full antialiased bg-background`}
+      className={`${sans.variable} ${display.variable} ${geistMono.variable} ${devanagari.variable} h-full antialiased bg-background`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
@@ -52,5 +57,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

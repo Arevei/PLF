@@ -71,14 +71,30 @@
   --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --font-sans: var(--font-geist-sans), var(--font-devanagari), Arial, sans-serif;
-  --font-serif: var(--font-devanagari), Georgia, serif;
+  --font-sans: var(--font-sans-display), var(--font-devanagari), Arial, sans-serif;
+  --font-serif: var(--font-display), var(--font-devanagari), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 @layer base {
   * { @apply border-border; box-sizing: border-box; }
-  body { @apply antialiased bg-background text-foreground; font-family: var(--font-geist-sans), Arial, sans-serif; }
+  body { @apply antialiased bg-background text-foreground; font-family: var(--font-sans-display), var(--font-devanagari), Arial, sans-serif; }
+}
+
+.plf-editorial {
+  background: #fff;
+  color: #172d3f;
+}
+
+.plf-editorial .editorial-heading {
+  font-family: var(--font-display), var(--font-devanagari), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+/* Keep the homepage headline scale compact without changing its responsive type system. */
+.plf-editorial :is(h1, h2, h3) {
+  zoom: .8;
 }
 
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }

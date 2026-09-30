@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, ChevronLeft, ChevronRight, Handshake, Pause, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const slides = [
   {
     eyebrow: "Passion for the Least Foundation",
     title: "Knowledge for Change. Capacity for Impact.",
-    description:
-      "Strengthening India's civil society through knowledge, capacity building, leadership, governance and collaboration.",
+    description: "Strengthening India's civil society through knowledge, capacity building, leadership, governance and collaboration.",
     image: "/images/Community-Building.webp",
     primaryHref: "/services",
     primaryLabel: "Explore Focus Areas",
@@ -20,8 +18,7 @@ const slides = [
   {
     eyebrow: "Civil society strengthening",
     title: "Building stronger organisations for lasting social impact.",
-    description:
-      "PLF works with NGOs, professionals, CSR partners, foundations and institutions to strengthen the systems that sustain social change.",
+    description: "PLF works with NGOs, professionals, CSR partners, foundations and institutions to strengthen the systems that sustain social change.",
     image: "/images/education.webp",
     primaryHref: "/membership",
     primaryLabel: "Join the Network",
@@ -31,8 +28,7 @@ const slides = [
   {
     eyebrow: "Knowledge, collaboration and practice",
     title: "Connecting people, institutions and evidence.",
-    description:
-      "From governance and finance to learning, digital transformation and policy dialogue, PLF helps social-sector actors become more capable and accountable.",
+    description: "From governance and finance to learning, digital transformation and policy dialogue, PLF helps social-sector actors become more capable and accountable.",
     image: "/images/Rural-Development.png",
     primaryHref: "/about",
     primaryLabel: "Our Approach",
@@ -48,90 +44,56 @@ export function HomeHeroCarousel() {
 
   useEffect(() => {
     if (isPaused) return;
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % slides.length);
-    }, 6000);
-
+    const timer = window.setInterval(() => setActiveIndex((current) => (current + 1) % slides.length), 6500);
     return () => window.clearInterval(timer);
   }, [isPaused]);
 
-  const goToSlide = (index: number) => {
-    setActiveIndex((index + slides.length) % slides.length);
-  };
+  const goToSlide = (index: number) => setActiveIndex((index + slides.length) % slides.length);
 
   return (
-    <section
-      className="relative min-h-[calc(100dvh-6.5rem)] overflow-hidden bg-primary text-primary-foreground"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-    >
-      {slides.map((slide, index) => (
-        <div
-          key={slide.title}
-          className={`absolute inset-0 transition-opacity duration-700 ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
-          aria-hidden={index !== activeIndex}
-        >
-          <img src={slide.image} alt="" className="size-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/84 to-primary/20" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,35,67,.62),transparent_44%)]" />
-        </div>
-      ))}
-
-      <div className="container relative mx-auto flex min-h-[calc(100dvh-6.5rem)] items-center px-5 py-16 lg:px-8">
-        <div className="max-w-4xl">
-          <div className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[.18em] text-primary-foreground/86">
-            <span className="h-0.5 w-10 bg-accent" />
-            {activeSlide.eyebrow}
+    <section className="px-3 pb-7 pt-4 sm:px-4">
+      <div className="relative mx-auto min-h-[620px] max-w-[1400px] overflow-hidden rounded-[28px] text-white md:min-h-[720px]" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocus={() => setIsPaused(true)} onBlur={() => setIsPaused(false)}>
+        {slides.map((slide, index) => (
+          <div key={slide.title} className={`absolute inset-0 transition-opacity duration-1000 ${index === activeIndex ? "opacity-100" : "opacity-0"}`} aria-hidden={index !== activeIndex}>
+            <img src={slide.image} alt="" className={`size-full object-cover transition-transform duration-[6500ms] ease-linear ${index === activeIndex ? "scale-105" : "scale-100"}`} />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#092d4d]/90 via-[#0b4a7f]/60 to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/15" />
           </div>
-          <h1 className="font-serif text-3xl font-bold leading-[1.08] text-primary-foreground sm:text-6xl lg:text-7xl">
-            {activeSlide.title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-primary-foreground/84 sm:text-lg">
-            {activeSlide.description}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full bg-primary-foreground px-7 text-primary hover:bg-primary-foreground/90">
-              <Link href={activeSlide.primaryHref}>
-                <BookOpenCheck data-icon="inline-start" />
-                {activeSlide.primaryLabel}
+        ))}
+
+        <div className="relative z-10 flex min-h-[620px] flex-col justify-between p-7 sm:p-10 md:min-h-[720px] md:p-14 lg:p-16">
+          <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.16em] text-white/90">
+            <span className="size-2 rounded-full bg-accent" />
+            Est. 2025 — A national platform for civil society
+          </div>
+
+          <div className="max-w-[860px] py-12">
+            <div className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.22em] text-white/85">
+              <span className="h-px w-9 bg-accent" />
+              {activeSlide.eyebrow}
+            </div>
+            <h1 className="editorial-heading max-w-[920px] text-[3.7rem] leading-[.84] text-white sm:text-7xl md:text-[6rem] lg:text-[7.25rem]">{activeSlide.title}</h1>
+            <p className="mt-7 max-w-xl text-sm leading-7 text-white/85 sm:text-base">{activeSlide.description}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href={activeSlide.primaryHref} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#083b68]">
+                {activeSlide.primaryLabel}<ArrowUpRight className="size-4" />
               </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/55 bg-primary/10 px-7 text-primary-foreground backdrop-blur hover:bg-primary-foreground hover:text-primary">
-              <Link href={activeSlide.secondaryHref}>
-                <Handshake data-icon="inline-start" />
-                {activeSlide.secondaryLabel}
-                <ArrowRight data-icon="inline-end" />
+              <Link href={activeSlide.secondaryHref} className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white hover:text-primary">
+                <span className="flex size-6 items-center justify-center rounded-full bg-white text-primary"><Play className="ml-0.5 size-3 fill-current" /></span>{activeSlide.secondaryLabel}
               </Link>
-            </Button>
-          </div>
-        </div>
-
-        <div className="absolute bottom-6 left-5 right-5 flex flex-col gap-4 sm:left-8 sm:right-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-2">
-            {slides.map((slide, index) => (
-              <button
-                key={slide.title}
-                type="button"
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all ${index === activeIndex ? "w-11 bg-accent" : "w-2.5 bg-primary-foreground/55 hover:bg-primary-foreground"}`}
-                aria-label={`Show slide ${index + 1}`}
-              />
-            ))}
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button type="button" variant="outline" size="icon" className="rounded-full border-primary-foreground/45 bg-primary/20 text-primary-foreground backdrop-blur hover:bg-primary-foreground hover:text-primary" onClick={() => goToSlide(activeIndex - 1)} aria-label="Previous hero slide">
-              <ChevronLeft />
-            </Button>
-            <Button type="button" variant="outline" size="icon" className="rounded-full border-primary-foreground/45 bg-primary/20 text-primary-foreground backdrop-blur hover:bg-primary-foreground hover:text-primary" onClick={() => setIsPaused((paused) => !paused)} aria-label={isPaused ? "Play hero carousel" : "Pause hero carousel"}>
-              {isPaused ? <Play /> : <Pause />}
-            </Button>
-            <Button type="button" variant="outline" size="icon" className="rounded-full border-primary-foreground/45 bg-primary/20 text-primary-foreground backdrop-blur hover:bg-primary-foreground hover:text-primary" onClick={() => goToSlide(activeIndex + 1)} aria-label="Next hero slide">
-              <ChevronRight />
-            </Button>
+          <div className="flex items-end justify-between gap-5">
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-2">{["/leadership/Founder.jpg", "/leadership/Secretary.jpg", "/leadership/Treasurer.jpg"].map((src) => <img key={src} src={src} alt="PLF supporter" className="size-8 rounded-full border-2 border-white object-cover" />)}</div>
+              <span className="hidden text-xs text-white/80 sm:block">Growing together with civil-society partners</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button type="button" onClick={() => goToSlide(activeIndex - 1)} aria-label="Previous slide" className="flex size-10 items-center justify-center rounded-full border border-white/35 bg-black/10 backdrop-blur transition hover:bg-white hover:text-primary"><ChevronLeft className="size-4" /></button>
+              <button type="button" onClick={() => setIsPaused((value) => !value)} aria-label={isPaused ? "Play slides" : "Pause slides"} className="flex size-10 items-center justify-center rounded-full border border-white/35 bg-black/10 backdrop-blur transition hover:bg-white hover:text-primary">{isPaused ? <Play className="size-4" /> : <Pause className="size-4" />}</button>
+              <button type="button" onClick={() => goToSlide(activeIndex + 1)} aria-label="Next slide" className="flex size-10 items-center justify-center rounded-full border border-white/35 bg-black/10 backdrop-blur transition hover:bg-white hover:text-primary"><ChevronRight className="size-4" /></button>
+            </div>
           </div>
         </div>
       </div>
