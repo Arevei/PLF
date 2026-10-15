@@ -92,6 +92,34 @@
   letter-spacing: -0.045em;
 }
 
+.plf-editorial-page .editorial-heading {
+  font-family: var(--font-display), var(--font-devanagari), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.plf-editorial-page .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  color: hsl(var(--primary));
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.plf-editorial-page .eyebrow::before {
+  width: 1.75rem;
+  height: 1px;
+  background: hsl(var(--primary));
+  content: "";
+}
+
+.plf-editorial-page :target {
+  scroll-margin-top: 7rem;
+}
+
 /* Keep the homepage headline scale compact without changing its responsive type system. */
 .plf-editorial :is(h1, h2, h3) {
   zoom: .8;
@@ -105,6 +133,15 @@
 .vertical-news-marquee:hover,
 .vertical-news-marquee:focus-within,
 .animation-paused { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
 .ProseMirror { outline: none; }
 .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: hsl(var(--muted-foreground)); float: left; height: 0; pointer-events: none; }
 .ProseMirror ul, .ProseMirror ol { margin: .75rem 0; padding-left: 1.25rem; }

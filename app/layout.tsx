@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | PLF",
   },
   description:
-    "PLF partners with communities to lift the least, expand opportunity, and build a kinder, more resilient India through education, health, livelihoods, and environmental action.",
+    "Passion for the Least Foundation strengthens India's civil society through knowledge, capacity building, leadership, governance and collaboration.",
 };
 
 export default function RootLayout({
