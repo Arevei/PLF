@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { CampaignShare } from "@/components/campaigns/CampaignShare";
 
 const CATEGORY_LABELS: Record<string, { en: string; hi: string }> = {
   health: { en: "Health", hi: "स्वास्थ्य" },
@@ -42,7 +43,8 @@ function campaignDuration(startDate?: string | null, endDate?: string | null) {
 
 export default function Campaigns() {
   const { t, language } = useLanguage();
-  const { data: campaigns, isLoading } = useListCampaigns();
+  const { data: allCampaigns, isLoading } = useListCampaigns();
+  const campaigns = allCampaigns?.filter((campaign) => campaign.isActive);
 
   return (
     <Layout>
@@ -51,7 +53,7 @@ export default function Campaigns() {
           <h1 className="text-4xl md:text-5xl font-serif font-bold  mb-4">
             {t("Crowdfunding Campaigns", "क्राउडफंडिंग अभियान")}
           </h1>
-          <p className="text-xl  max-w-2xl mx-auto font-serif">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t(
               "Support our active campaigns and help us reach our goals to make a difference.",
               "हमारे सक्रिय अभियानों का समर्थन करें और बदलाव लाने के हमारे लक्ष्यों को प्राप्त करने में मदद करें।"
@@ -79,15 +81,13 @@ export default function Campaigns() {
               const duration = campaignDuration(campaign.startDate, campaign.endDate);
               return (
                 <div key={campaign.id} className="bg-card rounded-2xl border overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
-                  {campaign.imageUrl && (
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={campaign.imageUrl} 
-                        alt={campaign.title} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={campaign.imageUrl || "/images/editorial/women-community-learning.webp"}
+                      alt={campaign.imageUrl ? campaign.title : "Women listening during a community learning session in India"}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full w-fit mb-4">
                       {t(category.en, category.hi)}
@@ -120,6 +120,7 @@ export default function Campaigns() {
                           {t("Support this cause", "इस अभियान का समर्थन करें")}
                         </Link>
                       </Button>
+                      <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} compact className="flex justify-center" />
                     </div>
                   </div>
                 </div>
@@ -139,7 +140,6 @@ export default function Campaigns() {
     </Layout>
   );
 }
-
 
 
 

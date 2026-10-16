@@ -6,16 +6,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useLanguage } from "@/lib/language-context";
 import { useListGallery } from "@/lib/api-client/api";
 
-const GALLERY_ITEMS = [
-  { id: -1, imageUrl: "/gallery/events/event-1.webp", caption: "Drinking Water Facility Inauguration", captionHindi: "शीतल पेय जल सेवा उद्घाटन", category: "events" },
-  { id: -2, imageUrl: "/gallery/events/event-2.webp", caption: "Volunteer Team at Service Point", captionHindi: "सेवा केंद्र पर स्वयंसेवक टीम", category: "events" },
-  { id: -3, imageUrl: "/gallery/events/event-3.webp", caption: "Counselling Support Session", captionHindi: "परामर्श सहयोग सत्र", category: "events" },
-  { id: -4, imageUrl: "/gallery/events/event-4.webp", caption: "Women Welfare Interaction", captionHindi: "महिला कल्याण संवाद", category: "events" },
-  { id: -5, imageUrl: "/gallery/events/event-5.webp", caption: "Community Participation", captionHindi: "सामुदायिक भागीदारी", category: "events" },
-  { id: -6, imageUrl: "/gallery/events/event-6.webp", caption: "Office Service Desk", captionHindi: "कार्यालय सेवा डेस्क", category: "events" },
-  { id: -7, imageUrl: "/gallery/events/event-7.webp", caption: "Leadership Presence", captionHindi: "नेतृत्व उपस्थिति", category: "events" },
-];
-
 type GalleryItem = {
   id: number;
   imageUrl: string;
@@ -101,8 +91,7 @@ const toPreviewText = (value: string) =>
 
 export default function Gallery() {
   const { t } = useLanguage();
-  const { data: uploadedItems = [], isLoading } = useListGallery();
-  const galleryItems = uploadedItems.length > 0 ? uploadedItems : GALLERY_ITEMS;
+  const { data: galleryItems = [], isLoading } = useListGallery();
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [isModalContentOpen, setIsModalContentOpen] = useState(true);
 
@@ -118,7 +107,7 @@ export default function Gallery() {
           <h1 className="text-4xl md:text-5xl font-serif font-bold  mb-4">
             {t("Activity Posts", "गतिविधि पोस्ट")}
           </h1>
-          <p className="text-xl max-w-2xl mx-auto font-serif">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t(
               "Glimpses of our impact and activities across various programs.",
               "हमारे कार्यक्रमों और प्रभाव की झलकियाँ।",
@@ -133,6 +122,11 @@ export default function Gallery() {
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div key={item} className="h-72 animate-pulse rounded-2xl bg-muted" />
             ))}
+          </div>
+        ) : galleryItems.length === 0 ? (
+          <div className="rounded-2xl border border-dashed bg-card py-20 text-center">
+            <h3 className="mb-2 text-2xl font-serif font-bold">{t("No activity posts yet", "अभी कोई गतिविधि पोस्ट नहीं")}</h3>
+            <p className="text-muted-foreground">{t("New activity updates will appear here once they are published.", "नई गतिविधियाँ प्रकाशित होने पर यहाँ दिखाई देंगी।")}</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

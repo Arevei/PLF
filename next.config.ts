@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/campiagns", destination: "/campaigns", permanent: true },
+      { source: "/campaign-detail", destination: "/campaigns", permanent: true },
+      { source: "/news-detail", destination: "/news", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

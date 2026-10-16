@@ -10,7 +10,7 @@ const slides = [
     eyebrow: "Passion for the Least Foundation",
     title: "Knowledge for Change. Capacity for Impact.",
     description: "Strengthening India's civil society through knowledge, capacity building, leadership, governance and collaboration.",
-    image: "/images/editorial/organisational-workshop.webp",
+    image: "/images/editorial/rural-women-shg-meeting.webp",
     primaryHref: "/services",
     primaryLabel: "Explore Focus Areas",
     secondaryHref: "/about",
@@ -20,7 +20,7 @@ const slides = [
     eyebrow: "Civil society strengthening",
     title: "Building stronger organisations for lasting social impact.",
     description: "PLF works with NGOs, professionals, CSR partners, foundations and institutions to strengthen the systems that sustain social change.",
-    image: "/images/editorial/leadership-presentation.webp",
+    image: "/images/editorial/shg-facilitated-training.webp",
     primaryHref: "/membership",
     primaryLabel: "Join the Network",
     secondaryHref: "/contact",
@@ -30,7 +30,7 @@ const slides = [
     eyebrow: "Knowledge, collaboration and practice",
     title: "Connecting people, institutions and evidence.",
     description: "From governance and finance to learning, digital transformation and policy dialogue, PLF helps social-sector actors become more capable and accountable.",
-    image: "/images/editorial/workshop-collaboration.webp",
+    image: "/images/editorial/gram-sabha-mendha-lekha.webp",
     primaryHref: "/about",
     primaryLabel: "Our Approach",
     secondaryHref: "/news",
@@ -73,8 +73,8 @@ export function HomeHeroCarousel() {
               <span className="h-px w-9 bg-accent" />
               {activeSlide.eyebrow}
             </div>
-            <h1 className="editorial-heading max-w-[920px] text-[3.7rem] leading-[.84] text-white sm:text-7xl md:text-[6rem] lg:text-[7.25rem]">{activeSlide.title}</h1>
-            <p className="mt-7 max-w-xl text-sm leading-7 text-white/85 sm:text-base">{activeSlide.description}</p>
+            <h1 className="editorial-heading max-w-[920px] text-[2.6rem] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">{activeSlide.title}</h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85">{activeSlide.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={activeSlide.primaryHref} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#083b68] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 {activeSlide.primaryLabel}<ArrowUpRight className="size-4" />

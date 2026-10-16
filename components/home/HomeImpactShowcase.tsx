@@ -20,7 +20,8 @@ export function HomeImpactShowcase({ news, gallery }: HomeImpactShowcaseProps) {
       .flatMap((item) => (item.imageUrls?.length ? item.imageUrls : [item.imageUrl])
         .filter(Boolean)
         .map((src) => ({ src, alt: item.caption || "PLF learning and field activity" })))
-      .slice(0, 8),
+      .filter((item, index, all) => all.findIndex((other) => other.src === item.src) === index)
+      .slice(0, 6),
     [gallery],
   );
   const scrollingNews = useMemo(() => [...newsItems.slice(newsIndex), ...newsItems.slice(0, newsIndex)], [newsIndex, newsItems]);
@@ -38,9 +39,9 @@ export function HomeImpactShowcase({ news, gallery }: HomeImpactShowcaseProps) {
   return (
     <section className="bg-[#edf5f8] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-12 grid gap-6 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7"><p className="text-[11px] font-bold uppercase tracking-[.22em] text-primary">Current work</p><h2 className="editorial-heading mt-3 text-5xl leading-[.92] text-[#172d3f] md:text-7xl">Evidence, learning and updates.</h2></div>
-          <p className="max-w-md text-sm leading-7 text-[#5d6b73] md:col-span-5">Explore published news and visual records shared through PLF&apos;s live content channels.</p>
+        <div className="mb-12 max-w-4xl">
+          <div><p className="text-[11px] font-bold uppercase tracking-[.22em] text-primary">Current work</p><h2 className="editorial-heading mt-3 text-5xl leading-[.92] text-[#172d3f] md:text-7xl">Evidence, learning and updates.</h2></div>
+          <p className="section-intro-description text-[#5d6b73]">Explore published news and visual records shared through PLF&apos;s live content channels.</p>
         </div>
 
         <div className={`grid gap-8 ${newsItems.length && galleryItems.length ? "lg:grid-cols-[.86fr_1.14fr]" : "max-w-3xl"}`}>
@@ -57,8 +58,8 @@ export function HomeImpactShowcase({ news, gallery }: HomeImpactShowcaseProps) {
 
           {galleryItems.length > 0 && <article className="min-w-0">
             <div className="mb-6 flex items-end justify-between gap-4"><div><p className="text-[10px] font-bold uppercase tracking-[.22em] text-primary">Field evidence</p><h3 className="mt-2 text-3xl font-bold text-primary">Learning in Practice</h3></div><Link href="/gallery" className="inline-flex items-center gap-1 text-xs font-bold text-primary">Full gallery <ArrowRight className="size-4" /></Link></div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-              {galleryItems.map((item, index) => <Link href="/gallery" key={`${item.src}-${index}`} className={`group relative overflow-hidden rounded-2xl ${index === 0 || index === 5 ? "row-span-2 aspect-[.9]" : "aspect-square"}`}><img src={item.src} alt={item.alt} className="size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transform-none" /><div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent opacity-40 transition group-hover:opacity-80" /></Link>)}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {galleryItems.map((item, index) => <Link href="/gallery" key={`${item.src}-${index}`} className="group relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl"><img src={item.src} alt={item.alt} className="size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transform-none" /><div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent opacity-40 transition group-hover:opacity-80" /></Link>)}
             </div>
           </article>}
         </div>

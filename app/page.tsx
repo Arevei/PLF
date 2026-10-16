@@ -16,6 +16,7 @@ import {
   HomeStakeholdersAndPrinciples,
 } from "@/components/home/HomeStructure";
 import { useListCampaigns, useListGallery, useListNews } from "@/lib/api-client/api";
+import { CampaignShare } from "@/components/campaigns/CampaignShare";
 
 const faqs = [
   {
@@ -60,12 +61,12 @@ export default function Home() {
           <section className="px-3 py-16 sm:px-4 md:py-24">
             <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-primary px-6 py-14 text-white md:px-14 md:py-20">
               <div className="absolute -right-24 -top-24 size-72 rounded-full bg-white/5 blur-2xl" />
-              <div className="relative mb-12 grid gap-6 md:grid-cols-12 md:items-end">
-                <div className="md:col-span-7">
+              <div className="relative mb-12 max-w-4xl">
+                <div>
                   <div className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.2em] text-white/85"><span className="h-px w-7 bg-white/70" />Current initiatives</div>
                   <h2 className="editorial-heading text-5xl leading-[.9] md:text-7xl">Support an initiative that matters.</h2>
                 </div>
-                <p className="text-sm leading-7 text-white/80 md:col-span-5">Explore active campaigns published through PLF&apos;s live platform and choose where you would like to contribute.</p>
+                <p className="section-intro-description text-white/80">Explore active campaigns published through PLF&apos;s live platform and choose where you would like to contribute.</p>
               </div>
               <div className="relative grid gap-5 md:grid-cols-3">
                 {activeCampaigns.slice(0, 3).map((campaign) => {
@@ -76,7 +77,7 @@ export default function Home() {
                         // Campaign images are uploaded URLs and are not limited to configured Next Image hosts.
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={campaign.imageUrl} alt={campaign.title} className="h-48 w-full rounded-xl object-cover" />
-                      ) : <div className="h-48 rounded-xl bg-primary/10" />}
+                      ) : <img src="/images/editorial/women-community-learning.webp" alt="Women listening during a community learning session in India" className="h-48 w-full rounded-xl object-cover" />}
                       <h3 className="editorial-heading mt-5 text-3xl leading-none">{campaign.title}</h3>
                       <p className="mt-3 line-clamp-3 text-xs leading-5 text-[#68747b]">{campaign.description}</p>
                       <div className="mt-6 flex items-end justify-between text-xs">
@@ -84,7 +85,10 @@ export default function Home() {
                         <div className="text-right"><span className="text-[#77848b]">Goal</span><p className="font-bold">₹{campaign.goalAmount.toLocaleString("en-IN")}</p></div>
                       </div>
                       <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#e8ecef]"><div className="h-full rounded-full bg-primary" style={{ width: `${progress}%` }} /></div>
-                      <Link href={`/campaigns/${campaign.id}`} className="mt-5 inline-flex items-center justify-between rounded-full bg-[#f2f3f2] px-5 py-3 text-xs font-semibold transition hover:bg-primary hover:text-white">View initiative <ArrowUpRight className="size-4" /></Link>
+                      <div className="mt-5 flex items-center gap-2">
+                        <Link href={`/campaigns/${campaign.id}`} className="inline-flex min-h-10 flex-1 items-center justify-between rounded-full bg-[#f2f3f2] px-5 py-3 text-xs font-semibold transition hover:bg-primary hover:text-white">View initiative <ArrowUpRight className="size-4" /></Link>
+                        <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} compact />
+                      </div>
                     </article>
                   );
                 })}
@@ -105,7 +109,7 @@ export default function Home() {
             <div className="md:col-span-5">
               <div className="mb-5 flex items-center gap-2"><span className="h-px w-7 bg-primary" /><span className="text-[10px] font-bold uppercase tracking-[.2em] text-primary">FAQ</span></div>
               <h2 className="editorial-heading text-5xl leading-[.9] text-[#172d3f] md:text-7xl">Frequently asked questions.</h2>
-              <p className="mt-6 max-w-sm text-sm leading-7 text-[#5d6b73]">Learn more before engaging with PLF. Still curious? <Link href="/contact" className="font-semibold text-primary underline underline-offset-4">Reach out to us.</Link></p>
+              <p className="section-intro-description text-[#5d6b73]">Learn more before engaging with PLF. Still curious? <Link href="/contact" className="font-semibold text-primary underline underline-offset-4">Reach out to us.</Link></p>
             </div>
             <div className="space-y-3 md:col-span-7">
               {faqs.map((faq, index) => {
@@ -131,7 +135,7 @@ export default function Home() {
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#e2bd61]">Continue the conversation</p>
               <h2 className="editorial-heading mt-2 text-4xl sm:text-5xl">Connect with PLF</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-white/75">Explore current updates, join the network or speak with us about a knowledge, capacity-building or institutional partnership.</p>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-white/75">Explore current updates, join the network or speak with us about a knowledge, capacity-building or institutional partnership.</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link href="/membership" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-primary">Join the network <ArrowRight className="size-4" /></Link>

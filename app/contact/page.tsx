@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, CheckCircle, MessageSquare } from "lucide-react";
+import { MapPin, Phone, Mail, CheckCircle } from "lucide-react";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -35,7 +35,7 @@ export default function Contact() {
         <div className="container mx-auto px-4 text-center">
           {/* <MessageSquare className="w-12 h-12 mx-auto mb-4" /> */}
           <h1 className="text-4xl font-serif font-bold mb-3">{t("Contact Us", "संपर्क करें")}</h1>
-          <p className="text-xl text-primary-foreground/80 max-w-xl mx-auto">
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-primary-foreground/85">
             {t("We'd love to hear from you. Reach out for any queries or to join our mission.", "हम आपसे सुनना पसंद करेंगे। किसी भी प्रश्न के लिए या हमारे मिशन में शामिल होने के लिए संपर्क करें।")}
           </p>
         </div>
@@ -150,5 +150,3 @@ export default function Contact() {
     </Layout>
   );
 }
-
-

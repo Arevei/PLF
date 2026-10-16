@@ -135,10 +135,10 @@ export function HomeCoreProposition() {
   return (
     <section className="px-3 py-10 sm:px-4 md:py-16">
       <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-[#061d31] text-white">
-        <div className="relative h-[320px] overflow-hidden md:h-[460px]">
+        <div className="relative h-[380px] overflow-hidden md:h-[480px]">
           <Image
-            src="/images/editorial/workshop-collaboration.webp"
-            alt="People learning and working together"
+            src="/images/editorial/rural-women-collective.webp"
+            alt="Rural women gathered for a community collective meeting in India"
             fill
             sizes="(min-width: 1440px) 1400px, 100vw"
             className="object-cover"
@@ -146,7 +146,7 @@ export function HomeCoreProposition() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#061d31]/95 via-[#061d31]/58 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 md:p-14">
             <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#e2bd61]">Our core proposition</p>
-            <h2 className="editorial-heading mt-4 max-w-3xl text-5xl leading-[.9] sm:text-6xl md:text-8xl">
+            <h2 className="editorial-heading mt-4 max-w-4xl text-3xl sm:text-6xl md:text-7xl">
               Knowledge becomes capacity. Capacity becomes impact.
             </h2>
           </div>
@@ -184,15 +184,15 @@ export function HomeFocusAreas() {
   return (
     <section className="px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 grid gap-7 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
+        <div className="mb-12 max-w-4xl">
+          <div>
             <p className="text-[10px] font-bold uppercase tracking-[.22em] text-primary">Eight connected focus areas</p>
             <h2 className="editorial-heading mt-4 text-5xl leading-[.9] text-[#172d3f] sm:text-6xl md:text-7xl">
               Strong institutions need more than one kind of strength.
             </h2>
           </div>
-          <div className="md:col-span-5">
-            <p className="text-sm leading-7 text-[#5d6b73]">
+          <div>
+            <p className="section-intro-description text-[#5d6b73]">
               PLF brings organisational development, leadership, knowledge, technology and accountability into one connected capacity-building practice.
             </p>
             <Link href="/services" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
@@ -242,12 +242,12 @@ export function HomeDevelopmentFramework() {
   return (
     <section className="bg-[#061d31] px-6 py-20 text-white md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
+        <div className="max-w-4xl">
+          <div>
             <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#e2bd61]">National development framework</p>
             <h2 className="editorial-heading mt-4 text-5xl leading-[.9] sm:text-6xl md:text-8xl">Strength at every level of change.</h2>
           </div>
-          <p className="text-sm leading-7 text-white/65 md:col-span-5">
+          <p className="section-intro-description text-white/70">
             PLF strengthens people and organisations, connects networks, improves systems and contributes evidence to wider sector dialogue.
           </p>
         </div>
@@ -272,7 +272,7 @@ export function HomeApproach() {
     <section className="px-3 py-16 sm:px-4 md:py-24">
       <div className="mx-auto grid max-w-[1400px] overflow-hidden rounded-[28px] bg-[#edf5f8] lg:grid-cols-[.9fr_1.1fr]">
         <div className="relative min-h-[420px] lg:min-h-[720px]">
-          <Image src="/images/editorial/organisational-workshop.webp" alt="Professionals collaborating during an organisational workshop" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+          <Image src="/images/editorial/women-self-driven-futures.webp" alt="Village women taking part in a facilitated community learning session" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#061d31]/70 via-transparent to-transparent" />
           <p className="absolute bottom-7 left-7 right-7 max-w-sm text-sm font-semibold leading-6 text-white md:bottom-10 md:left-10">
             We measure success not only by what PLF delivers directly, but by the capacity and impact we help others build.
@@ -281,7 +281,7 @@ export function HomeApproach() {
         <div className="p-7 sm:p-10 lg:p-14">
           <p className="text-[10px] font-bold uppercase tracking-[.22em] text-primary">Our approach</p>
           <h2 className="editorial-heading mt-4 text-5xl leading-[.9] text-[#172d3f] sm:text-6xl md:text-7xl">From listening to lasting capability.</h2>
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-[#5d6b73]">
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-[#5d6b73]">
             PLF brings together research, learning, training, advisory support, organisational development, networking and strategic partnerships.
           </p>
           <ol className="mt-10 divide-y divide-[#cbdce5] border-y border-[#cbdce5]">
@@ -310,7 +310,7 @@ export function HomeStakeholdersAndPrinciples() {
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[.22em] text-primary">Who PLF serves</p>
             <h2 className="editorial-heading mt-4 text-5xl leading-[.9] text-[#172d3f] sm:text-6xl md:text-7xl">A stronger ecosystem is built together.</h2>
-            <p className="mt-7 max-w-lg text-sm leading-7 text-[#5d6b73]">
+            <p className="mt-7 max-w-lg text-lg leading-8 text-[#5d6b73]">
               PLF works across the social-sector ecosystem, connecting the people and institutions that strengthen civil society in India.
             </p>
             <Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary">Discuss a partnership <ArrowUpRight className="size-4" /></Link>
@@ -328,12 +328,12 @@ export function HomeStakeholdersAndPrinciples() {
         </div>
 
         <div className="mt-20 border-t border-[#d8cdbf] pt-12">
-          <div className="grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+          <div className="max-w-4xl">
             <div>
               <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.22em] text-primary"><span className="h-px w-8 bg-primary" />Principles in practice</p>
               <h3 className="editorial-heading mt-5 text-5xl leading-[.92] text-[#172d3f] sm:text-6xl">How we choose<br />to work.</h3>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-[#5d6b73] lg:pb-2">Eight commitments guide how PLF listens, learns, collaborates and strengthens institutions—turning values into everyday choices.</p>
+            <p className="section-intro-description text-[#5d6b73]">Eight commitments guide how PLF listens, learns, collaborates and strengthens institutions—turning values into everyday choices.</p>
           </div>
           <div className="mt-12 grid overflow-hidden rounded-[28px] border border-[#d9e3e7] bg-[#d9e3e7] gap-px sm:grid-cols-2 xl:grid-cols-4">
             {principles.map(({ title, description, icon: Icon }, index) => (

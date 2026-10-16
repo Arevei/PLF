@@ -15,6 +15,7 @@ import { ArrowLeft, Users, Target, Heart } from "lucide-react";
 import { loadRazorpayScript, type RazorpaySuccess } from "@/lib/razorpay-client";
 import { captureReferralCodeFromUrl } from "@/lib/referral-code";
 import { PaymentProofUpload } from "@/components/payment-proof-upload";
+import { CampaignShare } from "@/components/campaigns/CampaignShare";
 
 const MIN_DONATION_AMOUNT = 100;
 
@@ -222,21 +223,16 @@ export default function CampaignDetail() {
 
         <div className="grid lg:grid-cols-2 gap-10">
           <div>
-            {campaign.imageUrl ? (
-              <img src={campaign.imageUrl} alt={t(campaign.title, campaign.titleHindi)} className="w-full h-72 object-cover rounded-2xl mb-6" />
-            ) : (
-              <div className="w-full h-72 bg-primary/10 rounded-2xl mb-6 flex items-center justify-center">
-                <Heart className="w-16 h-16 text-primary/40" />
-              </div>
-            )}
+            <img src={campaign.imageUrl || "/images/editorial/women-community-learning.webp"} alt={campaign.imageUrl ? t(campaign.title, campaign.titleHindi) : "Women listening during a community learning session in India"} className="mb-6 h-72 w-full rounded-2xl object-cover" />
 
             <div className="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-3 capitalize">{campaign.category}</div>
             {duration && <p className="mb-3 text-sm font-medium text-muted-foreground">{duration}</p>}
             <h1 className="text-3xl font-serif font-bold text-foreground mb-4">{t(campaign.title, campaign.titleHindi)}</h1>
             <div
-              className="prose prose-sm mb-6 max-w-none text-foreground prose-p:text-muted-foreground prose-headings:text-foreground prose-a:text-primary"
+              className="prose prose-sm mb-6 max-w-none [&_p+p]:mt-3 text-foreground prose-p:text-muted-foreground prose-headings:text-foreground prose-a:text-primary"
               dangerouslySetInnerHTML={{ __html: toRenderableHtml(t(campaign.description, campaign.descriptionHindi)) }}
             />
+            <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} className="mb-6" />
 
             <div className="bg-card border rounded-xl p-6 space-y-4">
               <div className="flex justify-between text-sm font-medium">
@@ -330,7 +326,6 @@ export default function CampaignDetail() {
     </Layout>
   );
 }
-
 
 
 

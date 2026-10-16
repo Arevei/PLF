@@ -101,7 +101,7 @@ export default function NewsDetail() {
         </div>
 
         <div
-          className="prose prose-lg max-w-none text-foreground leading-relaxed prose-p:text-foreground prose-headings:text-foreground prose-a:text-primary"
+          className="prose prose-lg max-w-none text-foreground leading-relaxed [&_p+p]:mt-4 prose-p:text-foreground prose-headings:text-foreground prose-a:text-primary"
           dangerouslySetInnerHTML={{ __html: toRenderableHtml(t(article.content, article.contentHindi)) }}
         />
       </div>

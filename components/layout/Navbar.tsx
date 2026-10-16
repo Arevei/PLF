@@ -8,6 +8,7 @@ import {
   Bell,
   Briefcase,
   Heart,
+  House,
   Images,
   Info,
   LayoutDashboard,
@@ -56,6 +57,7 @@ export function Navbar() {
 
   // Build nav items conditionally
   const navItems = [
+    { href: "/", label: t("Home", "होम"), icon: House },
     { href: "/about", label: t("About Us", "हमारे बारे में"), icon: Info },
     { href: "/services", label: t("Focus Areas", "कार्यक्रम"), icon: Briefcase },
     ...(allCampaigns.length > 0 ? [{ href: "/campaigns", label: t("Campaigns", "अभियान"), icon: Megaphone }] : []),
@@ -137,7 +139,16 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm font-medium transition-colors hover:text-primary">
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={pathname === item.href || (item.href !== "/" && pathname?.startsWith(`${item.href}/`)) ? "page" : undefined}
+              className={cn(
+                "relative py-2 text-sm font-medium transition-colors hover:text-primary",
+                (pathname === item.href || (item.href !== "/" && pathname?.startsWith(`${item.href}/`))) &&
+                  "text-primary after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full after:bg-primary",
+              )}
+            >
               {item.label}
             </Link>
           ))}
@@ -253,12 +264,13 @@ export function Navbar() {
                 <div className="grid gap-2">
                   {navItems.map((item) => {
                     const Icon = item.icon;
-                    const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+                    const isActive = pathname === item.href || (item.href !== "/" && pathname?.startsWith(`${item.href}/`));
 
                     return (
                       <SheetClose key={item.href} asChild>
                         <Link
                           href={item.href}
+                          aria-current={isActive ? "page" : undefined}
                           className={cn(
                             "flex min-h-12 items-center gap-3 rounded-lg border px-3 text-sm font-semibold transition-colors",
                             isActive

@@ -72,7 +72,7 @@
   --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
   --font-sans: var(--font-sans-display), var(--font-devanagari), Arial, sans-serif;
-  --font-serif: var(--font-display), var(--font-devanagari), Georgia, serif;
+  --font-serif: var(--font-display), var(--font-devanagari), Arial, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
@@ -87,15 +87,19 @@
 }
 
 .plf-editorial .editorial-heading {
-  font-family: var(--font-display), var(--font-devanagari), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.045em;
+  font-family: var(--font-display), var(--font-devanagari), Arial, sans-serif;
+  font-weight: 700;
+  /* Poppins needs more vertical room than the previous serif display face. */
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .plf-editorial-page .editorial-heading {
-  font-family: var(--font-display), var(--font-devanagari), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.045em;
+  font-family: var(--font-display), var(--font-devanagari), Arial, sans-serif;
+  font-weight: 700;
+  /* Poppins needs more vertical room than the previous serif display face. */
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .plf-editorial-page .eyebrow {
@@ -118,6 +122,13 @@
 
 .plf-editorial-page :target {
   scroll-margin-top: 7rem;
+}
+
+.section-intro-description {
+  margin-top: 1.25rem;
+  max-width: 48rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
 }
 
 /* Keep the homepage headline scale compact without changing its responsive type system. */

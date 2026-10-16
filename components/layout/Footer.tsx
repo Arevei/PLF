@@ -45,6 +45,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/80">
               <li><Link href="/privacy" className="hover:text-accent">{t("Privacy Policy", "गोपनीयता नीति")}</Link></li>
               <li><Link href="/terms" className="hover:text-accent">{t("Terms & Conditions", "नियम और शर्तें")}</Link></li>
+              <li><Link href="/photo-credits" className="hover:text-accent">{t("Photo Credits", "फ़ोटो क्रेडिट")}</Link></li>
               <li><Link href="/verify" className="hover:text-accent">{t("Verify Certificate", "प्रमाणपत्र सत्यापित करें")}</Link></li>
             </ul>
           </div>

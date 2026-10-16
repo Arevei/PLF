@@ -62,7 +62,7 @@ function VerifyContent() {
           <h1 className="mb-3 text-4xl font-serif font-bold">
             {t("Document Verification", "दस्तावेज़ सत्यापन")}
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-primary-foreground/80">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t(
               "Scan a QR code or enter a verification number to confirm documents issued by PLF — Passion for the Least Foundation.",
               "PLF — Passion for the Least Foundation द्वारा जारी दस्तावेज़ों की पुष्टि के लिए QR कोड स्कैन करें या सत्यापन नंबर दर्ज करें।",

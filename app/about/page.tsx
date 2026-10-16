@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn how Passion for the Least Foundation strengthens India's civil society through knowledge, capacity, governance, leadership and collaboration.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about", title: "About PLF", images: ["/og/plf-open-graph.jpg"] },
 };
 
 const proposition = [
@@ -79,7 +81,7 @@ export default function About() {
       <div className="plf-editorial-page overflow-hidden bg-white text-[#172d3f]">
         <section className="w-full">
           <div className="relative h-[250px] w-full overflow-hidden sm:h-[320px] lg:h-[360px]">
-            <Image src="/images/editorial/strategy-workshop.webp" alt="Professionals working together in a strategy workshop" fill priority sizes="100vw" className="object-cover object-[center_44%]" />
+            <Image src="/images/editorial/adivasi-women-village.webp" alt="Women meeting together in an Adivasi village in Umaria district" fill priority sizes="100vw" className="object-cover object-[center_38%]" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#061d31]/10 via-transparent to-[#061d31]/80" />
             <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1240px] items-center gap-3 px-6 pb-7 text-[11px] font-bold uppercase tracking-[.22em] text-white sm:px-10 lg:px-12">
               <span className="h-px w-8 bg-[#f2bd28]" /> Passion for the Least Foundation
@@ -96,15 +98,15 @@ export default function About() {
                 {proposition.map(({ title }) => <span key={title} className="rounded-full border border-white/16 bg-white/[.05] px-4 py-2 text-[11px] font-semibold text-white/70">{title}</span>)}
               </div>
 
-              <div className="mt-9 grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20">
+              <div className="mt-9 max-w-5xl">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[.2em] text-[#f2bd28]">About PLF</p>
                   <h1 className="editorial-heading mt-4 max-w-4xl text-5xl leading-[.96] text-white sm:text-6xl lg:text-[4.7rem]">
                     We strengthen the organisations that create change.
                   </h1>
                 </div>
-                <div className="lg:pb-1">
-                  <p className="text-base leading-8 text-white/70">Passion for the Least Foundation is a national knowledge and capacity-building organisation strengthening leadership, governance, collaboration and sustainable institutional capacity across India&apos;s social sector.</p>
+                <div className="mt-6">
+                  <p className="text-lg leading-8 text-white/75">Passion for the Least Foundation is a national knowledge and capacity-building organisation strengthening leadership, governance, collaboration and sustainable institutional capacity across India&apos;s social sector.</p>
                   <div className="mt-8 flex flex-wrap gap-3">
                     <Link href="/services" className="inline-flex items-center gap-2 rounded-full bg-[#f2bd28] px-6 py-3.5 text-sm font-bold text-[#172d3f] transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Explore focus areas <ArrowRight className="size-4" /></Link>
                     <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white hover:text-[#172d3f] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Work with PLF</Link>
@@ -119,12 +121,12 @@ export default function About() {
 
         <section className="px-6 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5">
+            <div className="max-w-4xl">
+              <div>
                 <p className="eyebrow">Who we are</p>
                 <h2 className="editorial-heading mt-4 text-5xl leading-[.96] sm:text-6xl">A multiplier for social impact.</h2>
               </div>
-              <div className="space-y-5 text-base leading-8 text-[#52636b] lg:col-span-7 lg:pt-8">
+              <div className="mt-6 space-y-5 text-lg leading-8 text-[#52636b]">
                 <p>PLF works with NGOs, grassroots institutions, social-sector professionals, CSR organisations, philanthropic foundations, development partners, academic institutions and other stakeholders.</p>
                 <p>Sustainable development requires capable organisations, ethical leadership, sound governance, effective financial management, relevant knowledge, strong partnerships and continuous learning.</p>
                 <p className="font-semibold text-[#172d3f]">The name Passion for the Least keeps our work centred on people who are most vulnerable, excluded or underserved.</p>
@@ -136,13 +138,13 @@ export default function About() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-primary text-white"><ShieldCheck className="size-5" /></div>
                 <p className="eyebrow mt-8">Our vision</p>
                 <h3 className="editorial-heading mt-3 text-3xl leading-tight sm:text-4xl">A strong, capable, accountable and connected civil society.</h3>
-                <p className="mt-5 text-sm leading-7 text-[#5d6b73]">Contributing to an inclusive, equitable and sustainable India where no one is left behind.</p>
+                <p className="mt-5 text-lg leading-8 text-[#5d6b73]">Contributing to an inclusive, equitable and sustainable India where no one is left behind.</p>
               </article>
               <article className="bg-primary p-7 text-white sm:p-10 lg:p-12">
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-white/12 text-[#f2bd28]"><Handshake className="size-5" /></div>
                 <p className="mt-8 text-[11px] font-bold uppercase tracking-[.2em] text-white/65">Our mission</p>
                 <h3 className="editorial-heading mt-3 text-3xl leading-tight sm:text-4xl">Knowledge, capacity and collaboration for lasting impact.</h3>
-                <p className="mt-5 text-sm leading-7 text-white/78">We strengthen India&apos;s civil-society ecosystem through learning, organisational and leadership capacity, good governance and accountable practice.</p>
+                <p className="mt-5 text-lg leading-8 text-white/78">We strengthen India&apos;s civil-society ecosystem through learning, organisational and leadership capacity, good governance and accountable practice.</p>
               </article>
             </div>
           </div>
@@ -150,9 +152,9 @@ export default function About() {
 
         <section className="border-y border-[#e1e9ed] bg-[#f7fafb] px-6 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:items-end">
+            <div className="max-w-4xl">
               <div><p className="eyebrow">Our core proposition</p><h2 className="editorial-heading mt-4 text-5xl leading-[.94] sm:text-6xl">From insight to impact.</h2></div>
-              <p className="max-w-2xl text-base leading-8 text-[#5d6b73] lg:justify-self-end">PLF turns relevant knowledge into practical capability, brings institutions together and helps them build the systems that sustain change.</p>
+              <p className="section-intro-description text-[#5d6b73]">PLF turns relevant knowledge into practical capability, brings institutions together and helps them build the systems that sustain change.</p>
             </div>
             <div className="mt-14 grid gap-px overflow-hidden rounded-[28px] bg-[#cfdde3] sm:grid-cols-2 lg:grid-cols-4">
               {proposition.map(({ title, detail, icon: Icon }, index) => (
@@ -190,7 +192,7 @@ export default function About() {
               <div className="lg:sticky lg:top-32 lg:col-span-4">
                 <p className="eyebrow">How PLF contributes</p>
                 <h2 className="editorial-heading mt-4 text-5xl leading-[.94] sm:text-6xl">Five roles. One stronger ecosystem.</h2>
-                <p className="mt-6 text-sm leading-7 text-[#5d6b73]">PLF combines knowledge, advice, capacity and convening to help civil society learn and improve together.</p>
+                <p className="mt-6 text-lg leading-8 text-[#5d6b73]">PLF combines knowledge, advice, capacity and convening to help civil society learn and improve together.</p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
                 {roles.map(({ title, description, icon: Icon }, index) => (
@@ -221,9 +223,9 @@ export default function About() {
 
         <section className="px-6 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+            <div className="max-w-4xl">
               <div><p className="eyebrow">What guides us</p><h2 className="editorial-heading mt-4 text-5xl leading-[.94] sm:text-6xl">Principles in every partnership.</h2></div>
-              <p className="max-w-2xl text-base leading-8 text-[#5d6b73] lg:justify-self-end">These commitments shape how PLF learns, collaborates and helps institutions build lasting capability.</p>
+              <p className="section-intro-description text-[#5d6b73]">These commitments shape how PLF learns, collaborates and helps institutions build lasting capability.</p>
             </div>
             <div className="mt-12 grid overflow-hidden rounded-[28px] border border-[#d9e3e7] bg-[#d9e3e7] gap-px sm:grid-cols-2 xl:grid-cols-4">
               {principles.map(({ title, detail, icon: Icon }, index) => (
@@ -240,7 +242,7 @@ export default function About() {
               <div>
               <p className="eyebrow">Who PLF serves</p>
               <h2 className="editorial-heading mt-4 text-5xl leading-[.94]">A connected social-sector ecosystem.</h2>
-              <p className="mt-6 text-sm leading-7 text-[#5d6b73]">PLF works across the ecosystem because stronger institutions grow through shared knowledge and trusted relationships.</p>
+              <p className="mt-6 text-lg leading-8 text-[#5d6b73]">PLF works across the ecosystem because stronger institutions grow through shared knowledge and trusted relationships.</p>
               </div>
               <div className="divide-y divide-[#dce6ea] border-y border-[#dce6ea]">
                 {stakeholders.map((stakeholder, index) => <div key={stakeholder} className="flex items-center gap-4 py-4"><span className="w-7 text-xs font-bold text-primary/50">{String(index + 1).padStart(2, "0")}</span><Users className="size-4 text-primary" /><p className="text-sm font-semibold">{stakeholder}</p></div>)}

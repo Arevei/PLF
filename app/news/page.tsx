@@ -35,7 +35,7 @@ export default function News() {
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
             {t("News & Updates", "समाचार और अपडेट")}
           </h1>
-          <p className="text-xl  max-w-2xl mx-auto font-serif">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t(
               "Stay updated with our latest initiatives, events, and impact stories.",
               "हमारी नवीनतम पहलों, घटनाओं और प्रभाव की कहानियों से अपडेट रहें।",

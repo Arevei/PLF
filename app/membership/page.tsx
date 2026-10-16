@@ -323,7 +323,7 @@ export default function Membership() {
         <div className="container mx-auto px-4 text-center">
           <Users className="mx-auto mb-4 h-12 w-12" />
           <h1 className="text-4xl font-serif font-bold">{t("Become a Member", "Become a Member")}</h1>
-          <p className="mx-auto mt-3 max-w-2xl text-primary-foreground/80">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t(
               paymentMode === "razorpay" ? "Submit your membership request and pay the fee according to the selected membership type." : "Submit your membership request for foundation approval. No membership payment is required in manual mode.",
               "अपना सदस्यता अनुरोध जमा करें और चुने गए सदस्यता प्रकार के अनुसार शुल्क भुगतान करें।",

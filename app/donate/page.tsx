@@ -202,7 +202,7 @@ export default function Donate() {
         <div className="container mx-auto px-4 text-center">
           <Heart className="w-12 h-12 mx-auto mb-4 fill-current" />
           <h1 className="text-4xl font-serif font-bold mb-3">{t("Your Donation Changes Lives", "आपका दान जीवन बदलता है")}</h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-primary-foreground/85">
             {t("Every rupee you donate goes directly to education, health, and community welfare programs.", "आपके द्वारा दिया गया प्रत्येक रुपया सीधे शिक्षा, स्वास्थ्य और सामुदायिक कल्याण कार्यक्रमों में जाता है।")}
           </p>
         </div>
