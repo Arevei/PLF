@@ -45,8 +45,8 @@ const focusAreas = [
     tagline: "Building Trust Through Strong Institutions",
     description: "Practical governance and financial systems help organisations protect resources, meet their responsibilities and earn lasting stakeholder trust.",
     points: ["Financial management", "Planning and budgeting", "Internal controls", "Audit and assurance", "Regulatory compliance", "NGO governance", "Risk management", "Fraud prevention", "Transparency and accountability", "Financial sustainability"],
-    image: "/images/editorial/community-leadership-india.webp",
-    imageAlt: "Self-help group members reviewing their records and accounts together",
+    image: "/images/editorial/financial-record-review.jpg",
+    imageAlt: "Professionals reviewing detailed financial records together",
   },
   {
     id: "leadership",

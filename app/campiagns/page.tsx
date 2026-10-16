@@ -115,12 +115,14 @@ export default function Campaigns() {
                       <div className="text-sm text-center text-muted-foreground">
                         <span className="font-medium text-foreground">{campaign.donorCount}</span> {t("donors", "दानकर्ता")}
                       </div>
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-medium">
-                        <Link href={`/campaigns/${campaign.id}`}>
-                          {t("Support this cause", "इस अभियान का समर्थन करें")}
-                        </Link>
-                      </Button>
-                      <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} compact className="flex justify-center" />
+                      <div className="flex items-stretch gap-2">
+                        <Button asChild className="min-h-10 flex-1 bg-primary text-white hover:bg-primary/90">
+                          <Link href={`/campaigns/${campaign.id}`}>
+                            {t("Support this cause", "इस अभियान का समर्थन करें")}
+                          </Link>
+                        </Button>
+                        <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} compact className="shrink-0 [&>button]:h-full" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -140,6 +142,5 @@ export default function Campaigns() {
     </Layout>
   );
 }
-
 
 

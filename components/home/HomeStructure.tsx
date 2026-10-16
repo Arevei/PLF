@@ -272,7 +272,13 @@ export function HomeApproach() {
     <section className="bg-[#edf5f8]  px-3 py-16 sm:px-4 md:py-24">
       <div className="mx-auto grid max-w-[1400px] overflow-hidden rounded-[28px] bg-[#edf5f8] lg:grid-cols-[.9fr_1.1fr]">
         <div className="relative min-h-[420px] lg:min-h-[720px]">
-          <Image src="/images/editorial/women-self-driven-futures.webp" alt="Village women taking part in a facilitated community learning session" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+          <Image
+            src="/images/editorial/institutional-capacity-workshop.jpg"
+            alt="A facilitator leading professionals through a collaborative capacity-building workshop"
+            fill
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="object-cover object-center"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#061d31]/70 via-transparent to-transparent" />
           <p className="absolute bottom-7 left-7 right-7 max-w-sm text-sm font-semibold leading-6 text-white md:bottom-10 md:left-10">
             We measure success not only by what PLF delivers directly, but by the capacity and impact we help others build.

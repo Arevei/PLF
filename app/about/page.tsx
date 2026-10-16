@@ -81,7 +81,14 @@ export default function About() {
       <div className="plf-editorial-page overflow-hidden bg-white text-[#172d3f]">
         <section className="w-full">
           <div className="relative h-[250px] w-full overflow-hidden sm:h-[320px] lg:h-[360px]">
-            <Image src="/images/editorial/adivasi-women-village.webp" alt="Women meeting together in an Adivasi village in Umaria district" fill priority sizes="100vw" className="object-cover object-[center_38%]" />
+            <Image
+              src="/images/editorial/civil-society-conference.jpg"
+              alt="A diverse audience of civil-society and knowledge-sector participants at a national conference in India"
+              fill
+              preload
+              sizes="100vw"
+              className="object-cover object-[center_50%]"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-[#061d31]/10 via-transparent to-[#061d31]/80" />
             <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1240px] items-center gap-3 px-6 pb-7 text-[11px] font-bold uppercase tracking-[.22em] text-white sm:px-10 lg:px-12">
               <span className="h-px w-8 bg-[#f2bd28]" /> Passion for the Least Foundation
@@ -134,11 +141,12 @@ export default function About() {
             </div>
 
             <div className="mt-16 grid overflow-hidden rounded-[28px] border border-[#d9e5ea] bg-[#f5fafc] md:grid-cols-2">
-              <article className="p-7 sm:p-10 lg:p-12">
+                          <article className="p-7 sm:p-10 lg:p-12">
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-primary text-white"><ShieldCheck className="size-5" /></div>
                 <p className="eyebrow mt-8">Our vision</p>
                 <h3 className="editorial-heading mt-3 text-3xl leading-tight sm:text-4xl">A strong, capable, accountable and connected civil society.</h3>
                 <p className="mt-5 text-lg leading-8 text-[#5d6b73]">Contributing to an inclusive, equitable and sustainable India where no one is left behind.</p>
+
               </article>
               <article className="bg-primary p-7 text-white sm:p-10 lg:p-12">
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-white/12 text-[#f2bd28]"><Handshake className="size-5" /></div>

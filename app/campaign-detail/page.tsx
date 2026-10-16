@@ -232,8 +232,6 @@ export default function CampaignDetail() {
               className="prose prose-sm mb-6 max-w-none [&_p+p]:mt-3 text-foreground prose-p:text-muted-foreground prose-headings:text-foreground prose-a:text-primary"
               dangerouslySetInnerHTML={{ __html: toRenderableHtml(t(campaign.description, campaign.descriptionHindi)) }}
             />
-            <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} className="mb-6" />
-
             <div className="bg-card border rounded-xl p-6 space-y-4">
               <div className="flex justify-between text-sm font-medium">
                 <span className="text-muted-foreground">{t("Raised", "एकत्रित")}</span>
@@ -315,10 +313,18 @@ export default function CampaignDetail() {
                   onChange={(e) => setDonorAddress(e.target.value)}
                 />
               </div>
-              <Button data-testid="button-donate" type="submit" className="w-full bg-primary hover:bg-primary/90 py-6 text-lg" disabled={createDonation.isPending || isPaying}>
-                <Heart className="w-5 h-5 mr-2 fill-current" />
-                {createDonation.isPending || isPaying ? t("Processing...", "प्रसंस्करण...") : t("Donate Now", "अभी दान करें")}
-              </Button>
+              <div className="flex items-stretch gap-3">
+                <Button data-testid="button-donate" type="submit" className="min-h-12 flex-1 bg-primary text-base hover:bg-primary/90 sm:text-lg" disabled={createDonation.isPending || isPaying}>
+                  <Heart className="mr-2 size-5 fill-current" />
+                  {createDonation.isPending || isPaying ? t("Processing...", "प्रसंस्करण...") : t("Donate Now", "अभी दान करें")}
+                </Button>
+                <CampaignShare
+                  title={campaign.title}
+                  campaignPath={`/campaigns/${campaign.id}`}
+                  compact
+                  className="shrink-0 [&>button]:h-full [&>button]:rounded-md [&>button]:px-4"
+                />
+              </div>
             </form>
           </div>
         </div>
@@ -326,6 +332,5 @@ export default function CampaignDetail() {
     </Layout>
   );
 }
-
 
 

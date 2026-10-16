@@ -41,6 +41,14 @@ const faqs = [
   },
 ];
 
+const toCampaignPreview = (input: string) =>
+  input
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+
 export default function Home() {
   const { data: campaigns = [] } = useListCampaigns();
   const { data: news = [] } = useListNews();
@@ -72,20 +80,27 @@ export default function Home() {
                 {activeCampaigns.slice(0, 3).map((campaign) => {
                   const progress = Math.min(100, Math.round((campaign.raisedAmount / Math.max(campaign.goalAmount, 1)) * 100));
                   return (
-                    <article key={campaign.id} className="flex flex-col rounded-2xl bg-white p-5 text-[#172d3f]">
+                    <article key={campaign.id} className="relative flex flex-col rounded-2xl bg-white p-5 text-[#172d3f]">
                       {campaign.imageUrl ? (
                         // Campaign images are uploaded URLs and are not limited to configured Next Image hosts.
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={campaign.imageUrl} alt={campaign.title} className="h-48 w-full rounded-xl object-cover" />
                       ) : <img src="/images/editorial/women-community-learning.webp" alt="Women listening during a community learning session in India" className="h-48 w-full rounded-xl object-cover" />}
                       <h3 className="editorial-heading mt-5 text-3xl leading-none">{campaign.title}</h3>
-                      <p className="mt-3 line-clamp-3 text-xs leading-5 text-[#68747b]">{campaign.description}</p>
+                      <p className="mt-3 line-clamp-3 text-xs leading-5 text-[#68747b]">{toCampaignPreview(campaign.description)}</p>
                       <div className="mt-6 flex items-end justify-between text-xs">
                         <div><span className="text-[#77848b]">Raised</span><p className="font-bold">₹{campaign.raisedAmount.toLocaleString("en-IN")}</p></div>
                         <div className="text-right"><span className="text-[#77848b]">Goal</span><p className="font-bold">₹{campaign.goalAmount.toLocaleString("en-IN")}</p></div>
                       </div>
                       <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#e8ecef]"><div className="h-full rounded-full bg-primary" style={{ width: `${progress}%` }} /></div>
-                      <div className="mt-5 flex items-center gap-2">
+                      <Link
+                        href={`/campaigns/${campaign.id}`}
+                        aria-label={`View campaign: ${campaign.title}`}
+                        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      >
+                        <span className="sr-only">View campaign: {campaign.title}</span>
+                      </Link>
+                      <div className="relative z-20 mt-5 flex items-center gap-2">
                         <Link href={`/campaigns/${campaign.id}`} className="inline-flex min-h-10 flex-1 items-center justify-between rounded-full bg-[#f2f3f2] px-5 py-3 text-xs font-semibold transition hover:bg-primary hover:text-white">View initiative <ArrowUpRight className="size-4" /></Link>
                         <CampaignShare title={campaign.title} campaignPath={`/campaigns/${campaign.id}`} compact />
                       </div>

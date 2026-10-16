@@ -1,6 +1,6 @@
 # Editorial image credits
 
-All editorial photographs live in `public/images/editorial/`. They show community institutions, self-help groups and frontline work across rural India, matching PLF's focus areas. Each was resized and converted to WebP for web delivery; derivatives of CC BY-SA images remain under the same licence.
+All editorial photographs live in `public/images/editorial/`. They show community institutions, self-help groups and frontline work across India, matching PLF's focus areas. Each was resized for web delivery; derivatives of CC BY-SA images remain under the same licence.
 
 | Local asset | Source | Author / licence |
 | --- | --- | --- |
@@ -17,6 +17,10 @@ All editorial photographs live in `public/images/editorial/`. They show communit
 | `women-community-learning.webp` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Self-driven_futures_02_(4844551180).jpg) | McKay Savage from London, UK, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | `women-farmers-gujarat.webp` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Women_at_work,_Gujarat.jpg) | Bernard Gagnon, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 | `women-self-driven-futures.webp` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Self-driven_futures_01_(4843932607).jpg) | McKay Savage from London, UK, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
+| `civil-society-conference.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Participants_-_Inaugural_Session_-_WikiConference_India_2026_-_Kochi_2026-09-04_03028.jpg) | Biswarup Ganguly, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `women-civil-society-leadership.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panel_Discussion_On_Who_Leads_The_Commons_Women_In_Wikimedia_-_WikiConference_India_2026_-_Kochi_2026-09-04_03346.jpg) | Biswarup Ganguly, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `institutional-capacity-workshop.jpg` | [Unsplash](https://unsplash.com/photos/Uz8THWPXwhI) | Smartworks Coworking, [Unsplash License](https://unsplash.com/license) |
+| `financial-record-review.jpg` | [Unsplash](https://unsplash.com/photos/MhqUBTxQ3Hw) | Olena Kholina, [Unsplash License](https://unsplash.com/license) |
 | `og/plf-open-graph.jpg` | Composite of `rural-women-shg-meeting.webp` and the PLF brand mark | McKay Savage, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); PLF brand asset |
 
 The OG image can be regenerated from the source photo if the brand mark or tagline changes.
