@@ -89,7 +89,7 @@ const focusAreas = [
     tagline: "Building Sustainable Organisations",
     description: "We strengthen the capabilities organisations need to build credible partnerships, diversify support and resource their mission responsibly.",
     points: ["CSR readiness", "Institutional fundraising", "Philanthropy", "Grant management", "Donor engagement", "Proposal development", "Resource mobilisation", "Income diversification", "Social investment", "Partnership development"],
-    image: "/images/editorial/women-farmers-gujarat.webp",
+    image: "/images/editorial/Resource.jpg",
     imageAlt: "Women farmers working in a field in Gujarat",
   },
   {
@@ -100,7 +100,7 @@ const focusAreas = [
     tagline: "From Activities to Evidence of Impact",
     description: "We help teams connect activities to outcomes, improve data quality and use evidence to learn, communicate and make better decisions.",
     points: ["Theory of change", "Monitoring systems", "Evaluation", "Impact assessment", "Indicators", "Data quality", "Outcome measurement", "Learning systems", "Impact reporting"],
-    image: "/images/editorial/frontline-health-records.webp",
+    image: "/images/editorial/Monitoring.jpg",
     imageAlt: "A frontline health worker recording information with mothers in a rural health centre",
   },
   {

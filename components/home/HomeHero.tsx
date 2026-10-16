@@ -45,7 +45,7 @@ export function HomeHero() {
               <p className="mt-6 border-l-2 border-[#e2bd61] pl-5 text-sm font-semibold leading-7 text-[#31495a]">Our work stays centred on people who are vulnerable, excluded or underserved.</p>
             </div>
             <div className="relative min-h-[390px] overflow-hidden rounded-[28px] sm:min-h-[520px] lg:order-last">
-              <Image src="/images/editorial/mission-classroom-learning.jfif" alt="Schoolchildren participating in a classroom learning session" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-center" />
+              <Image src="/images/editorial/mission-classroom-learning.jpg" alt="Schoolchildren participating in a classroom learning session" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061d31]/45 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-[#061d31]/72 p-5 text-white backdrop-blur-md sm:bottom-8 sm:left-8 sm:max-w-sm">
                 <p className="text-[10px] font-bold uppercase tracking-[.18em] text-[#e2bd61]">Knowledge for change</p>
