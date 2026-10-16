@@ -269,7 +269,7 @@ export function HomeDevelopmentFramework() {
 
 export function HomeApproach() {
   return (
-    <section className="px-3 py-16 sm:px-4 md:py-24">
+    <section className="bg-[#edf5f8]  px-3 py-16 sm:px-4 md:py-24">
       <div className="mx-auto grid max-w-[1400px] overflow-hidden rounded-[28px] bg-[#edf5f8] lg:grid-cols-[.9fr_1.1fr]">
         <div className="relative min-h-[420px] lg:min-h-[720px]">
           <Image src="/images/editorial/women-self-driven-futures.webp" alt="Village women taking part in a facilitated community learning session" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
@@ -304,7 +304,7 @@ export function HomeApproach() {
 
 export function HomeStakeholdersAndPrinciples() {
   return (
-    <section className="bg-[#f4efe7] px-6 py-20 md:px-10 md:py-28">
+    <section className=" px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
           <div>
@@ -318,7 +318,7 @@ export function HomeStakeholdersAndPrinciples() {
           <div className="relative rounded-[28px] border border-[#d8cdbf] bg-white/70 p-5 sm:p-8">
             <div className="grid gap-3 sm:grid-cols-2">
               {stakeholders.map((item, index) => (
-                <div key={item} className={`flex min-h-24 items-center gap-4 rounded-2xl border border-[#e2d9cf] bg-white p-4 ${index === stakeholders.length - 1 ? "sm:col-span-2" : ""}`}>
+                <div key={item} className={`flex min-h-24 items-center gap-4 rounded-2xl   bg-white p-4 ${index === stakeholders.length - 1 ? "sm:col-span-2" : ""}`}>
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">0{index + 1}</span>
                   <p className="text-sm font-semibold leading-5 text-[#31495a]">{item}</p>
                 </div>

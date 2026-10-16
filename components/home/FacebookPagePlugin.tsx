@@ -22,7 +22,7 @@ export function FacebookPagePlugin() {
   }, []);
 
   return (
-    <section className="px-4 py-16 sm:px-6 md:py-24">
+    <section className="bg-[#f8fbfc] px-4 py-16 sm:px-6 md:py-24">
       <Script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v23.0" strategy="afterInteractive" />
       <div id="fb-root" />
       <div className="mx-auto grid max-w-[1400px] overflow-hidden rounded-[28px] border border-[#dce5e9] bg-[#f7fbfc] shadow-[0_20px_60px_rgba(23,45,63,.08)] lg:grid-cols-[minmax(0,1fr)_598px]">

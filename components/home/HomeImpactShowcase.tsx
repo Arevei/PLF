@@ -37,7 +37,7 @@ export function HomeImpactShowcase({ news, gallery }: HomeImpactShowcaseProps) {
   if (!newsItems.length && !galleryItems.length) return null;
 
   return (
-    <section className="bg-[#edf5f8] px-6 py-20 md:px-10 md:py-28">
+    <section className="bg-[#f8fbfc] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 max-w-4xl">
           <div><p className="text-[11px] font-bold uppercase tracking-[.22em] text-primary">Current work</p><h2 className="editorial-heading mt-3 text-5xl leading-[.92] text-[#172d3f] md:text-7xl">Evidence, learning and updates.</h2></div>
