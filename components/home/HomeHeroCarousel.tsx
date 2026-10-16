@@ -53,7 +53,7 @@ export function HomeHeroCarousel() {
 
   return (
     <section className="px-3 pb-7 pt-4 sm:px-4">
-      <div className="relative mx-auto min-h-[620px] max-w-[1400px] overflow-hidden rounded-[28px] text-white md:min-h-[720px]" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocus={() => setIsPaused(true)} onBlur={() => setIsPaused(false)}>
+      <div className="relative mx-auto h-[600px] max-w-[1400px] overflow-hidden rounded-[28px] text-white sm:h-[580px] lg:h-[600px]" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} onFocus={() => setIsPaused(true)} onBlur={() => setIsPaused(false)}>
         {slides.map((slide, index) => (
           <div key={slide.title} className={`absolute inset-0 transition-opacity duration-1000 ${index === activeIndex ? "opacity-100" : "opacity-0"}`} aria-hidden={index !== activeIndex}>
             <Image src={slide.image} alt="" fill priority={index === 0} sizes="(min-width: 1440px) 1400px, 100vw" className={`object-cover transition-transform duration-[6500ms] ease-linear motion-reduce:transition-none ${index === activeIndex ? "scale-105 motion-reduce:scale-100" : "scale-100"}`} />
@@ -62,20 +62,20 @@ export function HomeHeroCarousel() {
           </div>
         ))}
 
-        <div className="relative z-10 flex min-h-[620px] flex-col justify-between p-7 sm:p-10 md:min-h-[720px] md:p-14 lg:p-16">
+        <div className="relative z-10 flex h-full flex-col p-7 sm:p-10 md:px-14 md:py-12 lg:px-16">
           <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.16em] text-white/90">
             <span className="size-2 rounded-full bg-accent" />
             A national knowledge and capacity-building organisation
           </div>
 
-          <div className="max-w-[860px] py-12">
+          <div className="max-w-[820px] pt-8 sm:pt-10">
             <div className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.22em] text-white/85">
               <span className="h-px w-9 bg-accent" />
               {activeSlide.eyebrow}
             </div>
-            <h1 className="editorial-heading max-w-[920px] text-[2.6rem] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">{activeSlide.title}</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85">{activeSlide.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <h1 className="editorial-heading max-w-[920px] text-[2.2rem] text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">{activeSlide.title}</h1>
+            <p className="mt-5 line-clamp-3 max-w-2xl text-lg leading-8 text-white/85 sm:line-clamp-2">{activeSlide.description}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
               <Link href={activeSlide.primaryHref} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#083b68] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 {activeSlide.primaryLabel}<ArrowUpRight className="size-4" />
               </Link>
@@ -85,7 +85,7 @@ export function HomeHeroCarousel() {
             </div>
           </div>
 
-          <div className="flex items-end justify-between gap-5">
+          <div className="mt-auto flex items-end justify-between gap-5">
             <div className="hidden flex-wrap gap-2 sm:flex">
               {["NGOs", "Social-sector professionals", "CSR teams", "Foundations"].map((item) => <span key={item} className="rounded-full border border-white/25 bg-black/10 px-3 py-2 text-[10px] font-semibold text-white/80 backdrop-blur">{item}</span>)}
             </div>

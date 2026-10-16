@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { Layout } from "@/components/layout/Layout";
 import { useLanguage } from "@/lib/language-context";
 import { useAuth } from "@/lib/auth-context";
-import { useLoginMember } from "@/lib/api-client/api";
+import { getGetMeQueryKey, useLoginMember } from "@/lib/api-client/api";
+import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,6 +19,7 @@ export default function Login() {
   const { toast } = useToast();
   const { setToken, user, isLoading } = useAuth();
   const router = useRouter();
+  const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const loginMember = useLoginMember();
@@ -33,8 +35,11 @@ export default function Login() {
     loginMember.mutate(
       { data: { email, password } },
       {
-        onSuccess: (response) => {
+        onSuccess: async (response) => {
           setToken(response.token);
+          // The signed-out "me" result is cached from page load; refresh it first,
+          // otherwise the dashboard still sees no user and bounces back to /login.
+          await queryClient.refetchQueries({ queryKey: getGetMeQueryKey() });
           toast({ title: t("Welcome back!", "आपका फिर से स्वागत है!") });
           router.replace("/dashboard");
         },
