@@ -19,9 +19,7 @@ export function Footer() {
               height={206}
               className="mb-4 h-auto w-32"
             />
-            <p className="mb-4 text-sm italic text-white/80">
-              &ldquo;मानव सेवा ही सर्वोच्च सेवा है&rdquo;
-            </p>
+          
             <p className="text-sm text-white/80">
               {t(
                 "PLF strengthens India's civil society through knowledge, capacity building, governance, leadership and collaboration.",
