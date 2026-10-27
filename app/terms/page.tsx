@@ -35,8 +35,7 @@ export default function Terms() {
             <h2 className="text-xl font-serif font-semibold text-foreground mb-3">{t("5. Refund Policy", "5. रिफंड नीति")}</h2>
             <p className="text-muted-foreground leading-relaxed">
               {t("Donations are generally non-refundable. However, in exceptional circumstances, refund requests may be considered within 3 days of the donation. Please contact us at", "दान आम तौर पर गैर-वापसी योग्य हैं। हालांकि, असाधारण परिस्थितियों में, दान के 3 दिनों के भीतर धनवापसी अनुरोधों पर विचार किया जा सकता है। हमसे संपर्क करें")}{" "}
-              <a href="https://mail.google.com/mail/u/0/?to=govindrajmichael2@gmail.com&su=Refund+Request&fs=1&tf=cm" target="_blank" rel="noopener noreferrer" className="hidden md:inline text-primary hover:underline">govindrajmichael2@gmail.com</a>
-              <a href="mailto:govindrajmichael2@gmail.com?subject=Refund+Request" className="md:hidden text-primary hover:underline">govindrajmichael2@gmail.com</a>
+              <a href="mailto:plf@plf-india.org?subject=Refund+Request" className="text-primary hover:underline">plf@plf-india.org</a>
               {" "}
               {t("for refund-related queries.", "धनवापसी से संबंधित प्रश्नों के लिए।")}
             </p>
@@ -51,5 +50,4 @@ export default function Terms() {
     </Layout>
   );
 }
-
 

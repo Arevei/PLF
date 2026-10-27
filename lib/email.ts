@@ -23,11 +23,11 @@ import {
 } from "@/lib/referral-achievements";
 
 // Admin email for notifications and reply-to
-export const ADMIN_EMAIL = "govindrajmichael2@gmail.com";
+export const ADMIN_EMAIL = "plf@plf-india.org";
 const ORGANIZATION_NAME = "PLF - Passion for the Least Foundation";
 const CONTACT_NAME = "R Govind Raji";
 const CONTACT_ADDRESS = "104A, Exotica Eastern Court, Crossing Republic, Ghaziabad, U.P - 201016";
-const CONTACT_PHONE = "+91 9999974145";
+const CONTACT_PHONE = "0120-4902645";
 const BRAND_PRIMARY = "#0B4A7F";
 
 // Branded email template wrapper

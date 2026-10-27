@@ -73,8 +73,8 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold text-white mb-1">{t("Phone", "फोन")}</h3>
                 <div className="flex flex-col gap-1 text-sm">
-                  <a href="tel:+919999974145" className="text-white/80 hover:text-accent transition-colors">
-                    +91 9999974145
+                  <a href="tel:01204902645" className="text-white/80 hover:text-accent transition-colors">
+                    0120-4902645
                   </a>
                 </div>
               </div>
@@ -87,18 +87,16 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold text-white mb-1">{t("Email", "ईमेल")}</h3>
                 <a 
-                  href="https://mail.google.com/mail/u/0/?to=govindrajmichael2@gmail.com&su=Niswarthjan+Seva+Foundation+Support&fs=1&tf=cm"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:plf@plf-india.org?subject=Passion+for+the+Least+Foundation+Support"
                   className="hidden md:inline text-sm text-white/80 hover:text-accent transition-colors"
                 >
-                  govindrajmichael2@gmail.com
+                  plf@plf-india.org
                 </a>
                 <a 
-                  href="mailto:govindrajmichael2@gmail.com?subject=Niswarthjan+Seva+Foundation+Support"
+                  href="mailto:plf@plf-india.org?subject=Passion+for+the+Least+Foundation+Support"
                   className="md:hidden text-sm text-white/80 hover:text-accent transition-colors"
                 >
-                  govindrajmichael2@gmail.com
+                  plf@plf-india.org
                 </a>
               </div>
             </div>

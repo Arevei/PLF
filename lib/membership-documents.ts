@@ -145,6 +145,11 @@ function drawDigitalStamp(doc: jsPDF, x: number, y: number, color: [number, numb
 }
 
 function getPngDimensions(buffer: Buffer) {
+  const pngSignature = "89504e470d0a1a0a";
+  if (buffer.subarray(0, 8).toString("hex") !== pngSignature) {
+    throw new Error("Certificate logo must be a valid PNG image");
+  }
+
   return {
     width: buffer.readUInt32BE(16),
     height: buffer.readUInt32BE(20),
@@ -240,6 +245,10 @@ export async function generateMembershipCertificatePdf(member: MemberDocumentRec
   addValueText(doc, safeText(member.email), 207, 124, 58);
   addValueText(doc, safeText(member.phone), 207, 135, 58);
   addValueText(doc, location, 207, 146, 58);
+
+  doc.setFontSize(7);
+  doc.setTextColor(89, 78, 73);
+  doc.text("For assistance: plf@plf-india.org | 0120-4902645", 34, 187);
 
   drawDigitalStamp(doc, 234, 176);
 

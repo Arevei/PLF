@@ -331,11 +331,8 @@ export default function Donate() {
                     "If you want to donate directly, scan this QR code and complete the payment. After payment, email the payment screenshot or transaction details to",
                     "यदि आप सीधे दान करना चाहते हैं, तो इस QR कोड को स्कैन करके भुगतान पूरा करें। भुगतान के बाद पेमेंट स्क्रीनशॉट या ट्रांजैक्शन विवरण इस ईमेल पर भेजें",
                   )}{" "}
-                  <a className="hidden md:inline font-semibold text-primary underline-offset-4 hover:underline" href="https://mail.google.com/mail/u/0/?to=govindrajmichael2@gmail.com&su=Donation+Payment+Confirmation&fs=1&tf=cm" target="_blank" rel="noopener noreferrer">
-                    govindrajmichael2@gmail.com
-                  </a>
-                  <a className="md:hidden font-semibold text-primary underline-offset-4 hover:underline" href="mailto:govindrajmichael2@gmail.com?subject=Donation+Payment+Confirmation">
-                    govindrajmichael2@gmail.com
+                  <a className="font-semibold text-primary underline-offset-4 hover:underline" href="mailto:plf@plf-india.org?subject=Donation+Payment+Confirmation">
+                    plf@plf-india.org
                   </a>
                   {t(" so the team can verify your donation and issue the receipt.", " ताकि टीम आपका दान सत्यापित करके रसीद जारी कर सके।")}
                 </p>
