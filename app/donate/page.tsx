@@ -17,7 +17,7 @@ import { PaymentWaitingOverlay } from "@/components/ui/payment-waiting-overlay";
 import { PaymentProofUpload } from "@/components/payment-proof-upload";
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000, 25000];
-const DONATION_QR_IMAGE = "/QR-image.png";
+const DONATION_QR_IMAGE = "/donation-qr.png";
 const MIN_DONATION_AMOUNT = 100;
 
 export default function Donate() {
@@ -319,8 +319,8 @@ export default function Donate() {
               <Image
                 src={DONATION_QR_IMAGE}
                 alt={t("Donation payment QR code", "दान भुगतान QR कोड")}
-                width={443}
-                height={650}
+                width={674}
+                height={1644}
                 className="mx-auto h-auto w-full max-w-sm rounded-lg border bg-white"
                 priority
               />
