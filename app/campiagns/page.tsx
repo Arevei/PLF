@@ -42,7 +42,7 @@ function campaignDuration(startDate?: string | null, endDate?: string | null) {
 }
 
 export default function Campaigns() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { data: allCampaigns, isLoading } = useListCampaigns();
   const campaigns = allCampaigns?.filter((campaign) => campaign.isActive);
 
@@ -94,10 +94,10 @@ export default function Campaigns() {
                     </div>
                     {duration && <p className="mb-3 text-xs font-medium text-muted-foreground">{duration}</p>}
                     <h3 className="text-xl font-bold font-serif mb-2 line-clamp-2">
-                      {language === "hi" && campaign.titleHindi ? campaign.titleHindi : campaign.title}
+                      {campaign.title}
                     </h3>
                     <p className="text-muted-foreground line-clamp-2 mb-6 flex-1 text-sm">
-                      {toPreviewText(language === "hi" && campaign.descriptionHindi ? campaign.descriptionHindi : campaign.description)}
+                      {toPreviewText(campaign.description)}
                     </p>
                     
                     <div className="space-y-4">
@@ -142,5 +142,3 @@ export default function Campaigns() {
     </Layout>
   );
 }
-
-

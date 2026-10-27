@@ -25,7 +25,7 @@ const toPreviewText = (input: string) =>
     .trim();
 
 export default function News() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { data: news, isLoading } = useListNews();
 
   return (
@@ -60,7 +60,7 @@ export default function News() {
             {news.map((article) => {
               const category = CATEGORY_LABELS[article.category] ?? CATEGORY_LABELS.general;
               const preview = toPreviewText(
-                language === "hi" && article.contentHindi ? article.contentHindi : article.content,
+                article.content,
               );
 
               return (
@@ -97,7 +97,7 @@ export default function News() {
                         </span>
                       </div>
                       <h3 className="text-xl font-bold font-serif mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                        {language === "hi" && article.titleHindi ? article.titleHindi : article.title}
+                        {article.title}
                       </h3>
                       <p className="text-muted-foreground line-clamp-3 mb-4 flex-1">{preview}</p>
                       <div className="text-primary font-medium text-sm">

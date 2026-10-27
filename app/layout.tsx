@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Geist_Mono, Noto_Sans_Devanagari, Poppins } from "next/font/google";
+import { DM_Sans, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { getSiteUrl } from "@/lib/site-url";
@@ -11,7 +11,6 @@ const display = Poppins({
   weight: ["500", "600", "700", "800"],
 });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const devanagari = Noto_Sans_Devanagari({ variable: "--font-devanagari", subsets: ["devanagari"] });
 
 const description =
   "Passion for the Least Foundation strengthens India's civil society through knowledge, capacity building, leadership, governance and collaboration.";
@@ -70,7 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable} ${geistMono.variable} ${devanagari.variable} h-full antialiased bg-background`}>
+    <html lang="en" className={`${sans.variable} ${display.variable} ${geistMono.variable} h-full antialiased bg-background`}>
       <body className="flex min-h-full flex-col">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }} />
         <Providers>{children}</Providers>
